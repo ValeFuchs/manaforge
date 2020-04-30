@@ -1,0 +1,2 @@
+#define TICKS_IN_DAY 864000
+#define TICKS_IN_SECOND 10
