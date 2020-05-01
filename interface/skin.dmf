@@ -40,6 +40,21 @@ menu "menu"
 		command = ""
 		category = "&Icons"
 		saved-params = "is-checked"
+	elem 
+		name = "&Scaling"
+		command = ""
+		category = "&Icons"
+		saved-params = "is-checked"
+	elem "textmode"
+		name = "&Text"
+		command = ".winset \"menu.textmode.is-checked=true?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\""
+		category = "&Icons"
+		can-check = true
+		saved-params = "is-checked"
+	elem 
+		name = "&Size"
+		command = ""
+		saved-params = "is-checked"
 	elem "stretch"
 		name = "&Stretch to fit"
 		command = ".winset \"mapwindow.map.icon-size=0\""
@@ -86,7 +101,6 @@ menu "menu"
 	elem 
 		name = "&Scaling"
 		command = ""
-		category = "&Icons"
 		saved-params = "is-checked"
 	elem "NN"
 		name = "&Nearest Neighbor"
@@ -108,12 +122,6 @@ menu "menu"
 		category = "&Scaling"
 		can-check = true
 		group = "scale"
-		saved-params = "is-checked"
-	elem "textmode"
-		name = "&Text"
-		command = ".winset \"menu.textmode.is-checked=true?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\""
-		category = "&Icons"
-		can-check = true
 		saved-params = "is-checked"
 	elem 
 		name = "&Help"
@@ -213,13 +221,16 @@ window "mainwindow"
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Map window"
 		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -228,7 +239,6 @@ window "mapwindow"
 		anchor2 = 100,100
 		font-family = "Arial"
 		font-size = 7
-		text-color = none
 		is-default = true
 		saved-params = "icon-size"
 
@@ -258,18 +268,32 @@ window "outputwindow"
 window "rpane"
 	elem "rpane"
 		type = MAIN
-		pos = 0,0
-		size = 640x480
+		pos = 281,0
+		size = 886x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 902x538
+		inner-size = 886x499
+	elem "button1"
+		type = BUTTON
+		pos = 112,24
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = "is-checked"
+		text = ""
+		command = ""
 	elem "rpanewindow"
 		type = CHILD
 		pos = -9,15
-		size = 636x449
+		size = 882x449
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
@@ -279,6 +303,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Text"
@@ -292,6 +317,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Info"
@@ -304,6 +330,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
@@ -313,6 +340,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Forum"
 		command = "forum"
@@ -322,6 +350,8 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		text-color = #ffffff
+		background-color = #ff3300
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
@@ -331,6 +361,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "GitHub"
 		command = "github"
@@ -340,6 +371,7 @@ window "rpane"
 		size = 67x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Changelog"
 		command = "Changelog"
@@ -352,6 +384,8 @@ window "rpane"
 		font-style = "bold"
 		text-color = #ffffff
 		background-color = #7289da
+		is-visible = false
+		is-disabled = true
 		saved-params = "is-checked"
 		text = "Discord"
 		command = "discord"
@@ -364,6 +398,8 @@ window "rpane"
 		font-style = "bold"
 		text-color = #ffffff
 		background-color = #ff4500
+		is-visible = false
+		is-disabled = true
 		saved-params = "is-checked"
 		text = "Karma"
 		command = "karmashop"
@@ -376,6 +412,8 @@ window "rpane"
 		font-style = "bold"
 		text-color = #ffffff
 		background-color = #008000
+		is-visible = false
+		is-disabled = true
 		saved-params = "is-checked"
 		text = "Donate"
 		command = "Donate"
@@ -385,6 +423,7 @@ window "rpane"
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Browser"
@@ -395,19 +434,23 @@ window "rpane"
 window "browserwindow"
 	elem "browserwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Browser"
 		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
 	elem "browser"
 		type = BROWSER
 		pos = 0,0
 		size = 640x499
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-default = true
 		saved-params = ""
 		on-show = ".winset\"rpane.infob.is-visible=true?rpane.infob.pos=130,7;rpane.textb.is-visible=true;rpane.browseb.is-visible=true;rpane.browseb.is-checked=true;rpane.rpanewindow.pos=0,30;rpane.rpanewindow.size=0x0;rpane.rpanewindow.left=browserwindow\""
@@ -416,13 +459,16 @@ window "browserwindow"
 window "infowindow"
 	elem "infowindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Info"
 		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
 	elem "info"
 		type = INFO
 		pos = 0,0
@@ -432,6 +478,7 @@ window "infowindow"
 		is-default = true
 		saved-params = ""
 		highlight-color = #00aa00
+		tab-background-color = none
 		on-show = ".winset\"rpane.infob.is-visible=true;rpane.browseb.is-visible=true?rpane.infob.pos=130,7:rpane.infob.pos=65,7 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
 		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.browseb.is-visible=true?rpane.browseb.is-checked=true rpane.rpanewindow.left=browserwindow:rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
 

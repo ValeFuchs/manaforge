@@ -58,12 +58,11 @@
 	set name = "Rules"
 	set desc = "View the server rules."
 	set hidden = 1
-	if(config.rulesurl)
-		if(alert("This will open the rules in your browser. Are you sure?",,"Yes","No")=="No")
-			return
-		src << link(config.rulesurl)
-	else
-		to_chat(src, "<span class='danger'>The rules URL is not set in the server configuration.</span>")
+
+	getFiles(
+		'html/rules.html'
+		)
+	src << browse('html/rules.html', "window=changes;size=675x650")
 
 /client/verb/github()
 	set name = "GitHub"
