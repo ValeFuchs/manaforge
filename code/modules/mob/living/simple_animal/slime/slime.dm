@@ -190,7 +190,7 @@
 			else
 				clear_fullscreen("brute")
 
-/mob/living/simple_animal/slime/ObjBump(obj/O)
+/* /mob/living/simple_animal/slime/ObjBump(obj/O)
 	if(!client && powerlevel > 0)
 		var/probab = 10
 		switch(powerlevel)
@@ -212,7 +212,7 @@
 					if (is_adult || prob(5))
 						O.attack_slime(src)
 						Atkcool = TRUE
-						addtimer(VARSET_CALLBACK(src, Atkcool, FALSE), 4.5 SECONDS)
+						addtimer(VARSET_CALLBACK(src, Atkcool, FALSE), 4.5 SECONDS) */
 
 /mob/living/simple_animal/slime/Process_Spacemove(movement_dir = 0)
 	return 2
