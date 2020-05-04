@@ -37,11 +37,13 @@ GLOBAL_LIST_INIT(restricted_camera_networks, list(
 GLOBAL_LIST_INIT(ruin_landmarks, list())
 
 GLOBAL_LIST_INIT(round_end_sounds, list(
-		'sound/AI/newroundsexy.ogg' = 2.3 SECONDS,
-		'sound/misc/apcdestroyed.ogg' = 3 SECONDS,
+		'sound/roundend/end1.ogg' = 5.2 SECONDS,
+		'sound/roundend/end2.ogg' = 3.4 SECONDS,
+		'sound/roundend/end3.ogg' = 5.7 SECONDS,
+		'sound/roundend/end4.ogg' = 11.5 SECONDS,
+		'sound/roundend/end5.ogg' = 4.6 SECONDS,
+		'sound/roundend/end5.ogg' = 4.0 SECONDS,
 		'sound/misc/bangindonk.ogg' = 1.6 SECONDS,
-		'sound/goonstation/misc/newround1.ogg' = 6.9 SECONDS,
-		'sound/goonstation/misc/newround2.ogg' = 14.8 SECONDS
 		))  // Maps available round end sounds to their duration
 
 GLOBAL_LIST_INIT(cooking_recipe_types, list(

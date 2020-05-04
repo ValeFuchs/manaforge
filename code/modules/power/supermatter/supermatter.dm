@@ -29,7 +29,7 @@
 
 #define WARNING_DELAY 20			//seconds between warnings.
 /obj/machinery/power/supermatter_shard
-	name = "supermatter shard"
+	name = "warpstone shard"
 	desc = "A strangely translucent and iridescent crystal that looks like it used to be part of a larger structure. <span class='danger'>You get headaches just from looking at it.</span>"
 	icon = 'icons/obj/supermatter.dmi'
 	icon_state = "darkmatter_shard"
@@ -45,11 +45,11 @@
 
 	var/damage = 0
 	var/damage_archived = 0
-	var/safe_alert = "Crystalline hyperstructure returning to safe operating levels."
+	var/safe_alert = "Warpstone hyperstructure returning to safe operating levels."
 	var/warning_point = 50
-	var/warning_alert = "Danger! Crystal hyperstructure instability!"
+	var/warning_alert = "Danger! Warpstone hyperstructure instability!"
 	var/emergency_point = 400
-	var/emergency_alert = "CRYSTAL DELAMINATION IMMINENT."
+	var/emergency_alert = "WARPSTONE DELAMINATION IMMINENT."
 	var/explosion_point = 600
 
 	var/emergency_issued = 0
@@ -86,7 +86,7 @@
 	var/has_reached_emergency = 0
 
 /obj/machinery/power/supermatter_shard/crystal
-	name = "supermatter crystal"
+	name = "warpstone crystal"
 	desc = "A strangely translucent and iridescent crystal."
 	base_icon_state = "darkmatter"
 	icon_state = "darkmatter"
@@ -106,7 +106,7 @@
 	SSair.atmos_machinery += src
 	radio = new(src)
 	radio.listening = 0
-	investigate_log("has been created.", "supermatter")
+	investigate_log("has been created.", "warpstone")
 
 
 /obj/machinery/power/supermatter_shard/proc/handle_admin_warnings()
@@ -114,12 +114,12 @@
 		return
 
 	// Generic checks, similar to checks done by supermatter monitor program.
-	aw_normal = status_adminwarn_check(SUPERMATTER_NORMAL, aw_normal, "INFO: Supermatter crystal has been energised.<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", FALSE)
-	aw_notify = status_adminwarn_check(SUPERMATTER_NOTIFY, aw_notify, "INFO: Supermatter crystal is approaching unsafe operating temperature.<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", FALSE)
-	aw_warning = status_adminwarn_check(SUPERMATTER_WARNING, aw_warning, "WARN: Supermatter crystal is taking integrity damage!<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", FALSE)
-	aw_danger = status_adminwarn_check(SUPERMATTER_DANGER, aw_danger, "WARN: Supermatter integrity is below 75%!<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", TRUE)
-	aw_emerg = status_adminwarn_check(SUPERMATTER_EMERGENCY, aw_emerg, "CRIT: Supermatter integrity is below 50%!<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", FALSE)
-	aw_delam = status_adminwarn_check(SUPERMATTER_DELAMINATING, aw_delam, "CRIT: Supermatter is delaminating!<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", TRUE)
+	aw_normal = status_adminwarn_check(SUPERMATTER_NORMAL, aw_normal, "INFO: Warpstone crystal has been energised.<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", FALSE)
+	aw_notify = status_adminwarn_check(SUPERMATTER_NOTIFY, aw_notify, "INFO: Warpstone crystal is approaching unsafe operating temperature.<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", FALSE)
+	aw_warning = status_adminwarn_check(SUPERMATTER_WARNING, aw_warning, "WARN: Warpstone crystal is taking integrity damage!<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", FALSE)
+	aw_danger = status_adminwarn_check(SUPERMATTER_DANGER, aw_danger, "WARN: Warpstone integrity is below 75%!<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", TRUE)
+	aw_emerg = status_adminwarn_check(SUPERMATTER_EMERGENCY, aw_emerg, "CRIT: Warpstone integrity is below 50%!<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", FALSE)
+	aw_delam = status_adminwarn_check(SUPERMATTER_DELAMINATING, aw_delam, "CRIT: Warpstone is delaminating!<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.", TRUE)
 
 /obj/machinery/power/supermatter_shard/proc/status_adminwarn_check(var/min_status, var/current_state, var/message, var/send_to_irc = FALSE)
 	var/status = get_status()
@@ -134,7 +134,7 @@
 
 
 /obj/machinery/power/supermatter_shard/Destroy()
-	investigate_log("has been destroyed.", "supermatter")
+	investigate_log("has been destroyed.", "warpstone")
 	if(damage > emergency_point)
 		emergency_lighting(0)
 	QDEL_NULL(radio)
@@ -143,7 +143,7 @@
 	return ..()
 
 /obj/machinery/power/supermatter_shard/proc/explode()
-	investigate_log("has exploded.", "supermatter")
+	investigate_log("has exploded.", "warpstone")
 	explosion(get_turf(src), explosion_power, explosion_power * 1.2, explosion_power * 1.5, explosion_power * 2, 1, 1)
 	qdel(src)
 	return
@@ -167,7 +167,7 @@
 				radio.autosay("[emergency_alert] Instability: [stability]%", src.name)
 				lastwarning = world.timeofday
 				if(!has_reached_emergency)
-					investigate_log("has reached the emergency point for the first time.", "supermatter")
+					investigate_log("has reached the emergency point for the first time.", "warpstone")
 					message_admins("[src] has reached the emergency point <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.")
 					has_reached_emergency = 1
 
@@ -289,7 +289,7 @@
 	if(Proj.flag != "bullet")
 		power += Proj.damage * config_bullet_energy
 		if(!has_been_powered)
-			investigate_log("has been powered for the first time.", "supermatter")
+			investigate_log("has been powered for the first time.", "warpstone")
 			message_admins("[src] has been powered for the first time <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.")
 			has_been_powered = 1
 	else
@@ -299,8 +299,8 @@
 
 /obj/machinery/power/supermatter_shard/singularity_act()
 	var/gain = 100
-	investigate_log("Supermatter shard consumed by singularity.","singulo")
-	message_admins("Singularity has consumed a supermatter shard and can now become stage six.<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.")
+	investigate_log("Warpstone shard consumed by singularity.","singulo")
+	message_admins("Singularity has consumed a warpstone shard and can now become stage six.<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.")
 	visible_message("<span class='userdanger'>[src] is consumed by the singularity!</span>")
 	for(var/mob/M in GLOB.mob_list)
 		M << 'sound/effects/supermatter.ogg' //everyone gunna know bout this
@@ -324,7 +324,7 @@
 /obj/machinery/power/supermatter_shard/attack_hand(mob/user as mob)
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... [user.p_their(TRUE)] body starts to glow and bursts into flames before flashing into ash.</span>",\
 		"<span class=\"danger\">You reach out and touch \the [src]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"</span>",\
-		"<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
+		"<span class=\"warning\">You hear an unearthly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
 
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, 1)
 
@@ -340,7 +340,7 @@
 /obj/machinery/power/supermatter_shard/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "supermatter_crystal.tmpl", "Supermatter Crystal", 500, 300)
+		ui = new(user, src, ui_key, "supermatter_crystal.tmpl", "Warpstone Crystal", 500, 300)
 		ui.open()
 		ui.set_auto_update(1)
 
@@ -469,6 +469,8 @@
         post_status("alert", "radiation")
     else
         post_status("shuttle")
+
+//WARPLIGHTNING
 
 /obj/machinery/power/supermatter_shard/proc/supermatter_zap()
 	playsound(src.loc, 'sound/magic/lightningshock.ogg', 100, 1, extrarange = 5)

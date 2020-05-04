@@ -9,7 +9,7 @@
 
 	use_power = NO_POWER_USE
 	idle_power_usage = 10
-	active_power_usage = 300
+	active_power_usage = 50
 
 	var/active = 0
 	var/powered = 0
@@ -27,6 +27,10 @@
 	var/projectile_sound = 'sound/weapons/emitter.ogg'
 	var/datum/radio_frequency/radio_connection
 	var/datum/effect_system/spark_spread/sparks
+
+/obj/machinery/power/emitter/welded/Initialize()
+	anchored = 1
+	return ..()
 
 /obj/machinery/power/emitter/Initialize(mapload)
 	. = ..()
@@ -47,7 +51,7 @@
 	var/max_firedelay = 120
 	var/firedelay = 120
 	var/min_firedelay = 24
-	var/power_usage = 350
+	var/power_usage = 100
 	for(var/obj/item/stock_parts/micro_laser/L in component_parts)
 		max_firedelay -= 20 * L.rating
 		min_firedelay -= 4 * L.rating

@@ -39,6 +39,8 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/Initialize()
 	login_music = pick(\
 	'sound/music/title4.ogg',\
+	'sound/music/title6.ogg',\
+	'sound/music/title7.ogg',\
 	'sound/music/title5.ogg',\
 	'sound/music/title1.ogg',\
 	'sound/music/title2.ogg',\

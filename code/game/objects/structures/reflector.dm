@@ -1,7 +1,7 @@
 /obj/structure/reflector
 	name = "reflector frame"
-	icon = 'icons/obj/stock_parts.dmi'
-	icon_state = "box_0"
+	icon = 'icons/obj/reflector.dmi'
+	icon_state = "reflector_base"
 	desc = "A frame to create a reflector.\n<span class='notice'>Use <b>5</b> sheets of <b>glass</b> to create a 1 way reflector.\nUse <b>10</b> sheets of <b>reinforced glass</b> to create a 2 way reflector.\nUse <b>1 diamond</b> to create a reflector cube.</span>"
 	anchored = 0
 	density = 1
@@ -137,7 +137,7 @@
 	name = "reflector"
 	icon = 'icons/obj/reflector.dmi'
 	icon_state = "reflector"
-	desc = "A double sided angled mirror for reflecting lasers. This one does so at a 90 degree angle."
+	desc = "An angled mirror for reflecting lasers. This one does so at a 90 degree angle."
 	finished = 1
 	var/static/list/rotations = list("[NORTH]" = list("[SOUTH]" = WEST, "[EAST]" = NORTH),
 "[EAST]" = list("[SOUTH]" = EAST, "[WEST]" = NORTH),
