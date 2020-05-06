@@ -18,11 +18,9 @@
 	if(new_dir)
 		reflect_turf = get_step(reflect_turf, new_dir)
 	else
-		visible_message("<span class='notice'>[src] is hit by [P]!</span>")
 		new_dir = 0
 		return ..() //Hits as normal, explodes or emps or whatever
 
-	visible_message("<span class='notice'>[P] bounces off of [src]</span>")
 	reflect_turf = get_step(loc,new_dir)
 
 	P.original = reflect_turf

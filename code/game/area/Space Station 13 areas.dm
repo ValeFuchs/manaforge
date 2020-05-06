@@ -1152,7 +1152,7 @@ GLOBAL_LIST_EMPTY(ghostteleportlocs)
 	icon_state = "engine"
 
 /area/engine/supermatter
-	name = "\improper Supermatter Engine"
+	name = "\improper Warpstone Engine"
 	icon_state = "engine"
 
 //Solars
@@ -1634,7 +1634,7 @@ GLOBAL_LIST_EMPTY(ghostteleportlocs)
 	icon_state = "head_quarters"
 
 /area/toxins/supermatter
-	name = "\improper Supermatter Lab"
+	name = "\improper Warpstone Lab"
 	icon_state = "toxlab"
 
 /area/toxins/xenobiology

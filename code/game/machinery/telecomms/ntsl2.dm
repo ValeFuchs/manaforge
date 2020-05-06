@@ -36,6 +36,7 @@ GLOBAL_DATUM_INIT(nttc_config, /datum/nttc_configuration, new())
 		"Electrician" = "engradio",
 		"Engine Technician" = "engradio",
 		"Life Support Specialist" = "engradio",
+		"Warpstone Expert" = "engradio",
 		"Maintenance Technician" = "engradio",
 		"Mechanic" = "engradio",
 		"Station Engineer" = "engradio",
