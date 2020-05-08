@@ -13,7 +13,7 @@
 */
 
 //Controls how much power is produced by each collector in range - this is the main parameter for tweaking SM balance, as it basically controls how the power variable relates to the rest of the game.
-#define POWER_FACTOR 0.5
+#define POWER_FACTOR 0.2
 #define DECAY_FACTOR 700			//Affects how fast the supermatter power decays
 #define CRITICAL_TEMPERATURE 10000	//K
 #define CHARGING_FACTOR 0.05
@@ -473,5 +473,5 @@
 //WARPLIGHTNING
 
 /obj/machinery/power/supermatter_shard/proc/supermatter_zap()
-	playsound(src.loc, 'sound/magic/lightningshock.ogg', 100, 1, extrarange = 5)
+	playsound(get_turf(src), 'sound/magic/lightningbolt.ogg', 20, 1, ignore_walls = TRUE)
 	tesla_zap(src, 10, max(1000,power * damage / explosion_point))

@@ -84,7 +84,7 @@
 		var/power_produced = powernet ? power / power_loss : power
 		add_avail(power_produced*input_power_multiplier)
 		flick("coilhit", src)
-		playsound(src.loc, 'sound/magic/lightningshock.ogg', 100, 1, extrarange = 5)
+		playsound(src.loc, 'sound/magic/lightningshock.ogg', 20, 1)
 		tesla_zap(src, 5, power_produced)
 		addtimer(CALLBACK(src, .proc/reset_shocked), 10)
 	else
@@ -98,7 +98,7 @@
 	coeff = max(coeff, 10)
 	var/power = (powernet.avail/2)
 	add_load(power)
-	playsound(src.loc, 'sound/magic/lightningshock.ogg', 100, 1, extrarange = 5)
+	playsound(src.loc, 'sound/magic/lightningshock.ogg', 20, 1)
 	tesla_zap(src, 10, power/(coeff/2))
 
 /obj/machinery/power/grounding_rod
