@@ -59,7 +59,7 @@ GLOBAL_VAR(bomb_set)
 	if(istype(O, /obj/item/disk/nuclear))
 		if(extended)
 			if(!user.drop_item())
-				to_chat(user, "<span class='notice'>\The [O] is stuck to your hand!</span>")
+				to_chat(user, "<span class='notice'>\The [O] is struck to your hand!</span>")
 				return
 			O.forceMove(src)
 			auth = O

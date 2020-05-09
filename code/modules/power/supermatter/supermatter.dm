@@ -22,8 +22,8 @@
 
 // Base variants are applied to everyone on the same Z level
 // Range variants are applied on per-range basis: numbers here are on point blank, it scales with the map size (assumes square shaped Z levels)
-#define DETONATION_RADS 200
-#define DETONATION_HALLUCINATION 600
+#define DETONATION_RADS 400
+#define DETONATION_HALLUCINATION 1200
 
 
 
@@ -95,7 +95,7 @@
 	emergency_point = 2000
 	explosion_point = 3600
 	gasefficency = 0.25
-	explosion_power = 24
+	explosion_power = 32
 
 
 /obj/machinery/power/supermatter_shard/New()
@@ -194,7 +194,11 @@
 						mob.apply_effect(rads, IRRADIATE)
 
 			explode()
-			emergency_lighting(0)
+			for(var/mob/M in GLOB.mob_list)
+				M << 'sound/effects/warpexplosion.ogg'
+			set_security_level(4)
+			SSshuttle.emergencyNoEscape = 1
+			new/datum/event/warpstorm
 
 	if(damage > warning_point && world.timeofday > last_zap)
 		last_zap = world.timeofday + rand(80,200)

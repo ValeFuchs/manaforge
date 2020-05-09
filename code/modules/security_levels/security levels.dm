@@ -111,7 +111,7 @@ GLOBAL_DATUM_INIT(security_announcement_down, /datum/announcement/priority/secur
 						FA.update_icon()
 
 			if(SEC_LEVEL_EPSILON)
-				GLOB.security_announcement_up.Announce("Central Command has ordered the Epsilon security level on the station. Consider all contracts terminated.","Attention! Epsilon security level activated!", new_sound = sound('sound/effects/purge_siren.ogg'))
+				GLOB.security_announcement_up.Announce("The Warpstone has detonated! Contact with Central Command has been lost! Stationwide warpstorms are imminent.","Attention! Epsilon security level activated!", new_sound = sound('sound/effects/purge_siren.ogg'))
 				GLOB.security_level = SEC_LEVEL_EPSILON
 
 				post_status("alert", "epsilonalert")
