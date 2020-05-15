@@ -1,6 +1,6 @@
 /mob/living/simple_animal/mouse
-	name = "mouse"
-	real_name = "mouse"
+	name = "rat"
+	real_name = "rat"
 	desc = "It's a small, disease-ridden rodent."
 	icon_state = "mouse_gray"
 	icon_living = "mouse_gray"
@@ -52,7 +52,7 @@
 					toast() // mmmm toasty.
 				else
 					visible_message("<span class='warning'>[src] chews through [C].</span>")
-				investigate_log("was chewed through by a mouse in [get_area(F)]([F.x], [F.y], [F.z] - [ADMIN_JMP(F)])","wires")
+				investigate_log("was chewed through by a rat in [get_area(F)]([F.x], [F.y], [F.z] - [ADMIN_JMP(F)])","wires")
 				C.deconstruct()
 
 /mob/living/simple_animal/mouse/handle_automated_speech()

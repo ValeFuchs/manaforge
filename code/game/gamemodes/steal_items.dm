@@ -89,6 +89,10 @@ datum/theft_objective/ai/check_special_completion(var/obj/item/aicard/C)
 			return 1
 	return 0
 
+/datum/theft_objective/supermatter
+	name = "a shard of a warpstone crystal. Be sure to use the proper safety equipment when extracting the shard!"
+	typepath = /obj/item/supermatter_crystal/splinter
+
 /datum/theft_objective/voidsuit
 	name = "a nasa voidsuit"
 	typepath = /obj/item/clothing/suit/space/nasavoid

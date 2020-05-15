@@ -32,10 +32,10 @@
 /mob/living/simple_animal/pet/cat/Runtime
 	name = "Runtime"
 	desc = "GCAT"
-	icon_state = "cat"
-	icon_living = "cat"
-	icon_dead = "cat_dead"
-	icon_resting = "cat_rest"
+	icon_state = "original"
+	icon_living = "original"
+	icon_dead = "original_dead"
+	icon_resting = "original_rest"
 	gender = FEMALE
 	gold_core_spawnable = NO_SPAWN
 	unique_pet = TRUE

@@ -1,16 +1,16 @@
 /datum/computer_file/program/supermatter_monitor
 	filename = "smmonitor"
-	filedesc = "Supermatter Monitoring"
+	filedesc = "Warpstone Monitoring"
 	ui_header = "smmon_0.gif"
 	program_icon_state = "smmon_0"
-	extended_desc = "This program connects to specially calibrated supermatter sensors to provide information on the status of supermatter-based engines."
+	extended_desc = "This program connects to specially calibrated warpstone sensors to provide information on the status of warpstone-based systems."
 	requires_ntnet = TRUE
 	transfer_access = ACCESS_CONSTRUCTION
-	network_destination = "supermatter monitoring system"
+	network_destination = "warpstone monitoring system"
 	size = 5
 	var/last_status = SUPERMATTER_INACTIVE
 	var/list/supermatters
-	var/obj/machinery/power/supermatter_shard/active		// Currently selected supermatter crystal.
+	var/obj/machinery/power/supermatter_crystal/active		// Currently selected supermatter crystal.
 
 
 /datum/computer_file/program/supermatter_monitor/process_tick()
@@ -40,7 +40,7 @@
 	var/turf/T = get_turf(nano_host())
 	if(!T)
 		return
-	for(var/obj/machinery/power/supermatter_shard/S in SSair.atmos_machinery)
+	for(var/obj/machinery/power/supermatter_crystal/S in SSair.atmos_machinery)
 		// Delaminating, not within coverage, not on a tile.
 		if(!(is_station_level(S.z) || is_mining_level(S.z)  || atoms_share_level(S, T) || !istype(S.loc, /turf/simulated/)))
 			continue
@@ -51,7 +51,7 @@
 
 /datum/computer_file/program/supermatter_monitor/proc/get_status()
 	. = SUPERMATTER_INACTIVE
-	for(var/obj/machinery/power/supermatter_shard/S in supermatters)
+	for(var/obj/machinery/power/supermatter_crystal/S in supermatters)
 		. = max(., S.get_status())
 
 /datum/computer_file/program/supermatter_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
@@ -59,7 +59,7 @@
 	if(!ui)
 		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/headers)
 		assets.send(user)
-		ui = new(user, src, ui_key, "supermatter_monitor.tmpl", "Supermatter Monitoring", 600, 400)
+		ui = new(user, src, ui_key, "supermatter_monitor.tmpl", "Warpstone Monitoring", 600, 400)
 		ui.set_auto_update(TRUE)
 		ui.set_layout_key("program")
 		ui.open()
@@ -79,33 +79,33 @@
 			return
 
 		data["active"] = TRUE
-		data["SM_integrity"] = active.get_integrity()
-		data["SM_power"] = active.power
-		data["SM_ambienttemp"] = air.temperature
-		data["SM_ambientpressure"] = air.return_pressure()
+		data["WS_integrity"] = active.get_integrity()
+		data["WS_power"] = active.power
+		data["WS_ambienttemp"] = air.temperature
+		data["WS_ambientpressure"] = air.return_pressure()
 		//data["SM_EPR"] = round((air.total_moles / air.group_multiplier) / 23.1, 0.01)
 		var/other_moles = 0.0
 		for(var/datum/gas/G in air.trace_gases)
 			other_moles+=G.moles
 		var/TM = air.total_moles()
 		if(TM)
-			data["SM_gas_O2"] = round(100*air.oxygen/TM,0.01)
-			data["SM_gas_CO2"] = round(100*air.carbon_dioxide/TM,0.01)
-			data["SM_gas_N2"] = round(100*air.nitrogen/TM,0.01)
-			data["SM_gas_PL"] = round(100*air.toxins/TM,0.01)
+			data["WS_gas_O2"] = round(100*air.oxygen/TM,0.01)
+			data["WS_gas_CO2"] = round(100*air.carbon_dioxide/TM,0.01)
+			data["WS_gas_N2"] = round(100*air.nitrogen/TM,0.01)
+			data["WS_gas_PL"] = round(100*air.toxins/TM,0.01)
 			if(other_moles)
-				data["SM_gas_OTHER"] = round(100*other_moles/TM,0.01)
+				data["WS_gas_OTHER"] = round(100*other_moles/TM,0.01)
 			else
-				data["SM_gas_OTHER"] = 0
+				data["WS_gas_OTHER"] = 0
 		else
-			data["SM_gas_O2"] = 0
-			data["SM_gas_CO2"] = 0
-			data["SM_gas_N2"] = 0
-			data["SM_gas_PH"] = 0
-			data["SM_gas_OTHER"] = 0
+			data["WS_gas_O2"] = 0
+			data["WS_gas_CO2"] = 0
+			data["WS_gas_N2"] = 0
+			data["WS_gas_PH"] = 0
+			data["WS_gas_OTHER"] = 0
 	else
 		var/list/SMS = list()
-		for(var/obj/machinery/power/supermatter_shard/S in supermatters)
+		for(var/obj/machinery/power/supermatter_crystal/S in supermatters)
 			var/area/A = get_area(S)
 			if(!A)
 				continue
@@ -117,7 +117,7 @@
 			)))
 
 		data["active"] = FALSE
-		data["supermatters"] = SMS
+		data["warpstones"] = SMS
 
 	return data
 
@@ -133,7 +133,7 @@
 		return TRUE
 	if(href_list["set"])
 		var/newuid = text2num(href_list["set"])
-		for(var/obj/machinery/power/supermatter_shard/S in supermatters)
+		for(var/obj/machinery/power/supermatter_crystal/S in supermatters)
 			if(S.uid == newuid)
 				active = S
 		return TRUE

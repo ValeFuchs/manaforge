@@ -98,9 +98,20 @@
 	desc = "Ultra-sharp blade attached directly to your bone for extra-accuracy."
 	toolspeed = 0.5
 
+/obj/item/scalpel/supermatter
+	name = "Warpstone Scalpel"
+	desc = "A specialised scalpel capable of touching the warpstone without disintigrating. You can use it to take samples."
+	icon_state = "scalpelsm"
+	damtype = "fire"
+	hitsound = "sound/weapons/sear.ogg"
+	origin_tech = "materials=3;biotech=1"
+	toolspeed = 0.5
+
 /*
  * Researchable Scalpels
  */
+
+
 /obj/item/scalpel/laser //parent type
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser."

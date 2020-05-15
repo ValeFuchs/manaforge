@@ -21,14 +21,14 @@
 //Captain fox
 /mob/living/simple_animal/pet/dog/fox/Renault
 	name = "Renault"
-	desc = "Renault, the Captain's trustworthy fox. I wonder what it says?"
+	desc = "Renault, the Captain's trustworthy fox."
 	unique_pet = TRUE
 	gold_core_spawnable = NO_SPAWN
 
 //Syndi fox
 /mob/living/simple_animal/pet/dog/fox/Syndifox
 	name = "Syndifox"
-	desc = "Syndifox, the Syndicate's most respected mascot. I wonder what it says?"
+	desc = "Syndifox, the Syndicate's most respected mascot."
 	icon_state = "Syndifox"
 	icon_living = "Syndifox"
 	icon_dead = "Syndifox_dead"
