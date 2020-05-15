@@ -876,6 +876,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	icon = 'icons/obj/supermatter.dmi'
 	icon_state = "darkmatter_splinter"
 	item_state = "darkmatter_splinter"
+	layer = ABOVE_MOB_LAYER
 	w_class = WEIGHT_CLASS_TINY
 
 
