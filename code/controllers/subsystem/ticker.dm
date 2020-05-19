@@ -5,6 +5,7 @@ SUBSYSTEM_DEF(ticker)
 	priority = FIRE_PRIORITY_TICKER
 	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME
+	offline_implications = "The game is no longer aware of when the round ends. Immediate server restart recommended."
 
 	var/round_start_time = 0
 	var/const/restart_timeout = 600
@@ -38,10 +39,8 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/Initialize()
 	login_music = pick(\
-	'sound/music/title4.ogg',\
-	'sound/music/title6.ogg',\
-	'sound/music/title7.ogg',\
-	'sound/music/title5.ogg',\
+	'sound/music/thunderdome.ogg',\
+	'sound/music/space.ogg',\
 	'sound/music/title1.ogg',\
 	'sound/music/title2.ogg',\
 	'sound/music/title3.ogg',)
@@ -99,7 +98,7 @@ SUBSYSTEM_DEF(ticker)
 				mode.check_finished() // some modes contain var-changing code in here, so call even if we don't uses result
 			else
 				game_finished |= mode.check_finished()
-			if(game_finished)
+			if(game_finished || force_ending)
 				current_state = GAME_STATE_FINISHED
 		if(GAME_STATE_FINISHED)
 			current_state = GAME_STATE_FINISHED
@@ -514,6 +513,11 @@ SUBSYSTEM_DEF(ticker)
 
 	//Ask the event manager to print round end information
 	SSevents.RoundEnd()
+
+	//make big obvious note in game logs that round ended
+	log_game("///////////////////////////////////////////////////////")
+	log_game("///////////////////// ROUND ENDED /////////////////////")
+	log_game("///////////////////////////////////////////////////////")
 
 	// Add AntagHUD to everyone, see who was really evil the whole time!
 	for(var/datum/atom_hud/antag/H in GLOB.huds)

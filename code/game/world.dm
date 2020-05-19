@@ -343,7 +343,7 @@ GLOBAL_VAR_INIT(world_topic_spam_protect_time, world.timeofday)
 
 /world/proc/load_motd()
 	GLOB.join_motd = file2text("config/motd.txt")
-	GLOB.join_tos = FALSE //file2text("config/tos.txt")
+	GLOB.join_tos = file2text("config/tos.txt")
 
 /proc/load_configuration()
 	config = new /datum/configuration()

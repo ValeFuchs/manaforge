@@ -428,12 +428,40 @@
 /obj/item/clothing/suit/space/hardsuit/medical
 	icon_state = "hardsuit-medical"
 	name = "medical hardsuit"
-	desc = "A special helmet designed for work in a hazardous, low pressure environment. Built with lightweight materials for extra comfort."
+	desc = "A special suit designed for work in a hazardous, low pressure environment. Built with lightweight materials for extra comfort."
 	item_state = "medical_hardsuit"
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/storage/firstaid,/obj/item/healthanalyzer,/obj/item/stack/medical,/obj/item/rad_laser)
 	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 5, "bomb" = 10, "bio" = 100, "rad" = 60, "fire" = 60, "acid" = 75)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/medical
 	slowdown = 0.5
+
+//Science hardsuit
+/obj/item/clothing/head/helmet/space/hardsuit/science
+	name = "science hardsuit helmet"
+	desc = "A special helmet designed for work in hazardous laboratories. Built with radiation proof materials for extra safety, but does not protect the eyes from intense light or warpstone hallucinations."
+	icon_state = "hardsuit0-medical"
+	item_state = "medical_helm"
+	item_color = "medical"
+	flash_protect = 0
+	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 5, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 75)
+	flags = STOPSPRESSUREDMAGE | THICKMATERIAL
+	scan_reagents = 1 //Generally worn by the RD, so they'd get utility off of seeing reagents
+	heat_protection = HEAD
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+
+/obj/item/clothing/suit/space/hardsuit/science
+	icon_state = "hardsuit-science"
+	name = "science hardsuit"
+	desc = "A special suit designed for work in hazardous laboratories. Built with radiation proof materials for extra safety."
+	item_state = "medical_hardsuit"
+	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/storage/firstaid,/obj/item/healthanalyzer,/obj/item/stack/medical,/obj/item/rad_laser)
+	armor = list("melee" = 30, "bullet" = 5, "laser" = 10, "energy" = 5, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/science
+	slowdown = 0.5
+	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 	//Security
 /obj/item/clothing/head/helmet/space/hardsuit/security

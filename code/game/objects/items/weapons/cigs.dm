@@ -95,6 +95,10 @@ LIGHTERS ARE IN LIGHTERS.DM
 	else if(istype(I, /obj/item/assembly/igniter))
 		light("<span class='notice'>[user] fiddles with [I], and manages to light [user.p_their()] [name].</span>")
 
+	else if(istype(I, /obj/item/supermatter_crystal/splinter))
+		var/obj/item/supermatter_crystal/splinter/P = I
+		light("<span class='danger'>Time seems to slow to a crawl as [user] touches [P] to [user.p_their()] [name].</span>\n<span class='notice'>\The [name] flashes alight with an eerie energy as [user] nonchalantly lifts [user.p_their()] hand away from the [P]. Damn.</span>")
+
 	else if(istype(I, /obj/item/gun/magic/wand/fireball))
 		var/obj/item/gun/magic/wand/fireball/F = I
 		if(F.charges)
@@ -320,6 +324,9 @@ LIGHTERS ARE IN LIGHTERS.DM
 		return
 	if(istype(I, /obj/item/match))
 		..()
+	else if(istype(I, /obj/item/supermatter_crystal/splinter))
+		var/obj/item/supermatter_crystal/splinter/P = I
+		light("<span class='danger'>Time seems to slow to a crawl as [user] touches [P] to [user.p_their()] [name].</span>\n<span class='notice'>\The [name] flashes alight with an eerie energy as [user] nonchalantly lifts [user.p_their()] hand away from the [P]. Damn.</span>")
 	else
 		to_chat(user, "<span class='notice'>[src] straight out REFUSES to be lit by such uncivilized means.</span>")
 
@@ -383,6 +390,9 @@ LIGHTERS ARE IN LIGHTERS.DM
 		return
 	if(istype(I, /obj/item/match))
 		..()
+	else if(istype(I, /obj/item/supermatter_crystal/splinter))
+		var/obj/item/supermatter_crystal/splinter/P = I
+		light("<span class='danger'>Time seems to slow to a crawl as [user] touches [P] to [user.p_their()] [name].</span>\n<span class='notice'>\The [name] flashes alight with an eerie energy as [user] nonchalantly lifts [user.p_their()] hand away from the [P]. Damn.</span>")
 	else
 		to_chat(user, "<span class='notice'>[src] straight out REFUSES to be lit by such means.</span>")
 

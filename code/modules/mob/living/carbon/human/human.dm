@@ -150,6 +150,9 @@
 /mob/living/carbon/human/wolpin/Initialize(mapload)
 	..(mapload, /datum/species/monkey/vulpkanin)
 
+/mob/living/carbon/human/skaven/Initialize(mapload)
+	..(mapload, /datum/species/monkey/skaven)
+
 /mob/living/carbon/human/neara/Initialize(mapload)
 	..(mapload, /datum/species/monkey/skrell)
 

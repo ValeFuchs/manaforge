@@ -122,6 +122,12 @@
 	mask_type    = /obj/item/clothing/mask/breath
 	req_access = list(ACCESS_CMO)
 
+/obj/machinery/suit_storage_unit/science
+	name = "science suit storage unit"
+	suit_type    = /obj/item/clothing/suit/space/hardsuit/science
+	mask_type    = /obj/item/clothing/mask/gas
+	req_access = list(ACCESS_RESEARCH)
+
 /obj/machinery/suit_storage_unit/cmo/secure
 	secure = TRUE
 

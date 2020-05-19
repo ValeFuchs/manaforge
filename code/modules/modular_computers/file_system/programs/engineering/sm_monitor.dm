@@ -3,10 +3,10 @@
 	filedesc = "Warpstone Monitoring"
 	ui_header = "smmon_0.gif"
 	program_icon_state = "smmon_0"
-	extended_desc = "This program connects to specially calibrated warpstone sensors to provide information on the status of warpstone-based systems."
+	extended_desc = "This program connects to specially calibrated warpstone sensors to provide information on the status of warpstone crystals."
 	requires_ntnet = TRUE
 	transfer_access = ACCESS_CONSTRUCTION
-	network_destination = "warpstone monitoring system"
+	network_destination = "supermatter monitoring system"
 	size = 5
 	var/last_status = SUPERMATTER_INACTIVE
 	var/list/supermatters
@@ -64,6 +64,7 @@
 		ui.set_layout_key("program")
 		ui.open()
 
+
 /datum/computer_file/program/supermatter_monitor/ui_data()
 	var/list/data = get_header_data()
 
@@ -79,52 +80,51 @@
 			return
 
 		data["active"] = TRUE
-		data["WS_integrity"] = active.get_integrity()
-		data["WS_power"] = active.power
-		data["WS_ambienttemp"] = air.temperature
-		data["WS_ambientpressure"] = air.return_pressure()
+		data["SM_integrity"] = active.get_integrity()
+		data["SM_power"] = active.power
+		data["SM_ambienttemp"] = air.temperature
+		data["SM_ambientpressure"] = air.return_pressure()
 		//data["SM_EPR"] = round((air.total_moles / air.group_multiplier) / 23.1, 0.01)
 		var/other_moles = 0.0
 		for(var/datum/gas/G in air.trace_gases)
 			other_moles+=G.moles
 		var/TM = air.total_moles()
 		if(TM)
-			data["WS_gas_O2"] = round(100*air.oxygen/TM,0.01)
-			data["WS_gas_CO2"] = round(100*air.carbon_dioxide/TM,0.01)
-			data["WS_gas_N2"] = round(100*air.nitrogen/TM,0.01)
-			data["WS_gas_PL"] = round(100*air.toxins/TM,0.01)
+			data["SM_gas_O2"] = round(100*air.oxygen/TM,0.01)
+			data["SM_gas_CO2"] = round(100*air.carbon_dioxide/TM,0.01)
+			data["SM_gas_N2"] = round(100*air.nitrogen/TM,0.01)
+			data["SM_gas_PL"] = round(100*air.toxins/TM,0.01)
 			if(other_moles)
-				data["WS_gas_OTHER"] = round(100*other_moles/TM,0.01)
+				data["SM_gas_OTHER"] = round(100*other_moles/TM,0.01)
 			else
-				data["WS_gas_OTHER"] = 0
+				data["SM_gas_OTHER"] = 0
 		else
-			data["WS_gas_O2"] = 0
-			data["WS_gas_CO2"] = 0
-			data["WS_gas_N2"] = 0
-			data["WS_gas_PH"] = 0
-			data["WS_gas_OTHER"] = 0
+			data["SM_gas_O2"] = 0
+			data["SM_gas_CO2"] = 0
+			data["SM_gas_N2"] = 0
+			data["SM_gas_PH"] = 0
+			data["SM_gas_OTHER"] = 0
 	else
 		var/list/SMS = list()
 		for(var/obj/machinery/power/supermatter_crystal/S in supermatters)
 			var/area/A = get_area(S)
-			if(!A)
-				continue
+			if(A)
+				SMS.Add(list(list(
+				"area_name" = A.name,
+				"integrity" = S.get_integrity(),
+				"uid" = S.uid
+				)))
 
-			SMS.Add(list(list(
-			"area_name" = A.name,
-			"integrity" = S.get_integrity(),
-			"uid" = S.uid
-			)))
 
 		data["active"] = FALSE
-		data["warpstones"] = SMS
+		data["supermatters"] = SMS
 
 	return data
-
 
 /datum/computer_file/program/supermatter_monitor/Topic(href, href_list)
 	if(..())
 		return TRUE
+
 	if(href_list["clear"])
 		active = null
 		return TRUE

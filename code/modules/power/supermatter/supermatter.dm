@@ -76,7 +76,7 @@
 GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 /obj/machinery/power/supermatter_crystal
-	name = "the Warpstone Crystal"
+	name = "warpstone crystal"
 	desc = "A strangely translucent and iridescent crystal. <span class='danger'>You get headaches just from looking at it, but it's hard to stop staring.</span>"
 	icon = 'icons/obj/supermatter.dmi'
 	icon_state = "darkmatter"
@@ -161,8 +161,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	var/produces_gas = TRUE
 	var/obj/effect/countdown/supermatter/countdown
 
-	var/is_main_engine = FALSE
-
 	var/datum/looping_sound/supermatter/soundloop
 
 	var/moveable = FALSE
@@ -184,7 +182,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 /obj/machinery/power/supermatter_crystal/Initialize()
 	. = ..()
-	uid = gl_uid++
 	SSair.atmos_machinery += src
 	countdown = new(src)
 	countdown.start()
@@ -193,8 +190,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	radio.config(list("Engineering" = 0))
 	radio.listening = 0
 	investigate_log("has been created.", "warpstone")
-	if(is_main_engine)
-		GLOB.main_supermatter_engine = src
 
 
 
@@ -230,20 +225,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	QDEL_NULL(radio)
 	GLOB.poi_list -= src
 	QDEL_NULL(countdown)
-	if(is_main_engine && GLOB.main_supermatter_engine == src)
-		GLOB.main_supermatter_engine = null
 	QDEL_NULL(soundloop)
 	return ..()
-
-/obj/machinery/power/supermatter_crystal/examine(mob/user as mob)
-	. = ..()
-	for(var/mob/living/carbon/human/C in view(src, min(7, round(sqrt(power/6)))))
-		if(C.glasses && istype(C.glasses, /obj/item/clothing/glasses/meson))
-			continue
-		var/obj/item/organ/internal/eyes/eyes = C.get_int_organ(/obj/item/organ/internal/eyes)
-		if(!istype(eyes))
-			continue
-		. += "<span class='danger'>You get headaches just from looking at it, but it's hard to stop staring.</span>"
 
 /obj/machinery/power/supermatter_crystal/proc/get_status()
 	var/turf/T = get_turf(src)
@@ -691,13 +674,25 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 /obj/machinery/power/supermatter_crystal/attack_tk(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		to_chat(C, "<span class='userdanger'>That was a really dense idea.</span>")
-		Consume(user)
+		if(C.wear_suit && istype(C.wear_suit, /obj/item/clothing/suit/space/hardsuit/science))
+			return
+
+		else
+			to_chat(C, "<span class='userdanger'>That was a really dense idea.</span>")
+			Consume(user)
 
 /obj/machinery/power/supermatter_crystal/attack_alien(mob/user)
 	dust_mob(user, cause = "alien attack")
 
 /obj/machinery/power/supermatter_crystal/attack_animal(mob/living/simple_animal/S)
+	if(istype(S, /mob/living/simple_animal/mouse))
+		S.visible_message("<span class='danger'>The [S] explodes in a flash of green light on contact with the [src], resonating with a horrible sound...</span>",\
+			"<span class='danger'>The [S] is engulfed in green light on contact with the [src]. Appearing in its place is some kind of horrible rat-like creature!</span>")
+		playsound(src, 'sound/effects/supermatter.ogg', 150, TRUE)
+		qdel(S)
+		new /mob/living/carbon/human/skaven(drop_location())
+		return
+
 	var/murder
 	if(!S.melee_damage_upper && !S.melee_damage_lower)
 		murder = S.friendly
@@ -722,10 +717,23 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	ui_interact(user)
 
 /obj/machinery/power/supermatter_crystal/attack_hand(mob/living/user)
-	. = ..()
-	if(.)
+	if(istype(user, /mob/living/carbon/human/skaven))
+		user.visible_message("<span class='notice'>[user] reaches out and touches the warpstone, seemingly enthralled by it.")
 		return
-	dust_mob(user, cause = "hand")
+
+	else if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.wear_suit && istype(C.wear_suit, /obj/item/clothing/suit/space/hardsuit/science))
+			C.visible_message("<span class='notice'>[C] reaches out and touches the warpstone, but nothing particularly interesting happens.")
+			return
+		else
+			dust_mob(user, cause = "hand")
+
+	else
+		. = ..()
+		if(.)
+			return
+		dust_mob(user, cause = "hand")
 
 /obj/machinery/power/supermatter_crystal/proc/dust_mob(mob/living/nom, vis_msg, mob_msg, cause)
 	if(nom.incorporeal_move || nom.status_flags & GODMODE)
@@ -774,12 +782,29 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 			//Shard extraction will be a future update, I'm sick of fucking around with this right now
 	if(istype(W, /obj/item/scalpel/supermatter))
-		to_chat(user, "<span class='notice'>You carefully begin to scrape \the [src] with the \the [W]...</span>")
+		to_chat(user, "<span class='notice'>You carefully begin to scrape [src] with [W]...</span>")
 		if(W.use_tool(src, user, 60, volume=100))
-			to_chat(user, "<span class='danger'>You extract a sliver from \the [src]. \The [src] begins to react violently!</span>")
+			to_chat(user, "<span class='danger'>You extract a sliver from [src]. [src] begins to react violently!</span>")
 			new /obj/item/supermatter_crystal/splinter(drop_location())
 			matter_power += 800
 		return
+
+	if(istype(W, /obj/item/clothing/suit/space/hardsuit/science))
+		to_chat(user, "<span class='notice'>You whack [src] with [W]... but nothing happens.</span>")
+		return
+
+	if(istype(W, /obj/item/clothing/gloves/color/supermatter))
+		to_chat(user, "<span class='notice'>You smack [src] with [W]... but nothing happens.</span>")
+		return
+
+	if(istype(W, /obj/item/holder/mouse))
+		user.visible_message("<span class='danger'>The [W] explodes in a flash of green light on contact with [src], resonating with a horrible sound...</span>",\
+			"<span class='danger'>The [W] is engulfed in green light on contact with [src]. Appearing in its place is some kind of horrible rat-like creature!</span>")
+		playsound(src, 'sound/effects/supermatter.ogg', 150, TRUE)
+		qdel(W)
+		new /mob/living/carbon/human/skaven(drop_location())
+		return
+
 
 	if(user.drop_item(W))
 		Consume(W)
@@ -797,19 +822,64 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		dust_mob(user, vis_msg, mob_msg)
 
 /obj/machinery/power/supermatter_crystal/Bumped(atom/movable/AM)
-	if(isliving(AM))
-		AM.visible_message("<span class='danger'>\The [AM] slams into \the [src] inducing a resonance... [AM.p_their()] body starts to glow and burst into flames before flashing into dust!</span>",\
-		"<span class='userdanger'>You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\"</span>",\
-		"<span class='hear'>You hear an unearthly noise as a wave of heat washes over you.</span>")
-	else if(isobj(AM) && !iseffect(AM))
-		AM.visible_message("<span class='danger'>\The [AM] smacks into \the [src] and rapidly flashes to ash.</span>", null,\
-		"<span class='hear'>You hear a loud crack as you are washed with a wave of heat.</span>")
-	else
+	if(istype(AM, /mob/living/carbon/human/skaven))
 		return
 
-	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, TRUE)
+	else if(istype(AM, /mob/living/carbon/human))
+		var/mob/living/carbon/human/yeet = AM
 
-	Consume(AM)
+		if(yeet.wear_suit && istype(yeet.wear_suit, /obj/item/clothing/suit/space/hardsuit/science))
+			return
+
+		else
+			AM.visible_message("<span class='danger'>\The [AM] slams into \the [src] inducing a resonance... [AM.p_their()] body starts to glow and burst into flames before flashing into dust!</span>",\
+			"<span class='userdanger'>You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\"</span>",\
+			"<span class='hear'>You hear an unearthly noise as a wave of heat washes over you.</span>")
+			playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, TRUE)
+
+			Consume(AM)
+			return
+
+	else if(isliving(AM))
+		if(istype(AM, /mob/living/simple_animal/mouse))
+			AM.visible_message("<span class='danger'>The [AM] is engulfed in green light on contact with [src]. Appearing in its place is some kind of horrible rat-like creature!</span>",\
+				"<span class='userdanger'>You slam into the [src], and are consumed by green light. As your ears are filled with unearthly ringing, you feel your body begin to contort and change.</span>",\
+				"<span class='hear'>You hear an unearthly noise as a wave of heat washes over you.</span>")
+			playsound(src, 'sound/effects/supermatter.ogg', 150, TRUE)
+			qdel(AM)
+			new /mob/living/carbon/human/skaven(drop_location())
+			return
+
+		else
+
+			AM.visible_message("<span class='danger'>\The [AM] slams into \the [src] inducing a resonance... [AM.p_their()] body starts to glow and burst into flames before flashing into dust!</span>",\
+				"<span class='userdanger'>You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\"</span>",\
+				"<span class='hear'>You hear an unearthly noise as a wave of heat washes over you.</span>")
+			playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, TRUE)
+
+			Consume(AM)
+			return
+
+	else if(isobj(AM) && !iseffect(AM))
+		if(istype(AM, /obj/item/holder/mouse))
+			AM.visible_message("<span class='danger'>The [AM] explodes in a flash of green light on contact with [src], resonating with a horrible sound...</span>",\
+				"<span class='danger'>The [AM] is engulfed in green light on contact with [src]. Appearing in its place is some kind of horrible rat-like creature!</span>")
+			playsound(src, 'sound/effects/supermatter.ogg', 150, TRUE)
+			qdel(AM)
+			new /mob/living/carbon/human/skaven(drop_location())
+			return
+		else
+			AM.visible_message("<span class='danger'>\The [AM] smacks into \the [src] and rapidly flashes to ash.</span>", null,\
+			"<span class='hear'>You hear a loud crack as you are washed with a wave of heat.</span>")
+			playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, TRUE)
+
+			Consume(AM)
+			return
+	else
+		playsound(get_turf(src), 'sound/effects/supermatter.ogg', 50, TRUE)
+
+		Consume(AM)
+		return
 
 /obj/machinery/power/supermatter_crystal/proc/Consume(atom/movable/AM)
 	if(istype(AM, /mob/living))
@@ -836,10 +906,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 				"<span class='danger'>The unearthly ringing subsides and you notice you have new radiation burns.</span>", 2)
 		else
 			L.show_message("<span class='hear'>You hear an unearthly ringing and notice your skin is covered in fresh radiation burns.</span>", 2)
-
-/obj/machinery/power/supermatter_crystal/engine
-	is_main_engine = TRUE
-
 
 // This is purely informational UI that may be accessed by AIs or robots
 /obj/machinery/power/supermatter_crystal/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
@@ -870,18 +936,23 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 	return data
 
+//////////////////////
+//Warpstone subtypes//
+//////////////////////
+
 /obj/item/supermatter_crystal/splinter
-	name = "Warpstone Splinter"
+	name = "warpstone splinter"
 	desc = "A splinter of warpstone cut off from a larger crystal. Even this tiny shard is too dangerous to touch without special equipment."
 	icon = 'icons/obj/supermatter.dmi'
 	icon_state = "darkmatter_splinter"
 	item_state = "darkmatter_splinter"
 	layer = ABOVE_MOB_LAYER
 	w_class = WEIGHT_CLASS_TINY
+	origin_tech = "materials=4;powerstorage=3"
 
 
 /obj/machinery/power/supermatter_crystal/shard
-	name = "Warpstone Shard"
+	name = "warpstone shard"
 	desc = "A strangely translucent and iridescent crystal that looks like it used to be part of a larger structure. <span class='danger'>You get headaches just from looking at it, but it's hard to stop staring.</span>"
 	icon_state = "darkmatter_shard"
 	anchored = FALSE
@@ -891,8 +962,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	moveable = TRUE
 
 /obj/machinery/power/supermatter_crystal/shard/science
-	name = "Stabilized Warpstone Shard"
-	desc = "A warpstone shard contained within a specialized Gellar Field for use in experiments. Even stable, it is still very incredibly dangerous. <span class='danger'>You get headaches just from looking at it, but it's hard to stop staring.</span>"
+	name = "stabilized warpstone shard"
+	desc = "A warpstone shard contained within a specialized Gellar Field for use in experiments. Even stable, it is still very dangerous. <span class='danger'>You get headaches just from looking at it, but it's hard to stop staring.</span>"
 	icon_state = "darkmatter_shard"
 	base_icon_state = "darkmatter_shard"
 	anchored = TRUE
@@ -902,14 +973,14 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 // When you wanna make a supermatter shard for the dramatic effect, but
 // don't want it exploding suddenly
 /obj/machinery/power/supermatter_crystal/shard/safe
-	name = "Secure Warpstone Shard"
+	name = "warpstone shard"
 	takes_damage = FALSE
 	produces_gas = FALSE
 	moveable = FALSE
 	anchored = TRUE
 
 /obj/machinery/power/supermatter_crystal/shard/safe/fakecrystal //Safe shard with crystal visuals, used in the Supermatter/Hyperfractal shuttle
-	name = "Warpstone crystal"
+	name = "warpstone crystal"
 	base_icon_state = "darkmatter"
 	icon_state = "darkmatter"
 

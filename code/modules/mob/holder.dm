@@ -101,7 +101,7 @@
 	icon_state = "pai"
 
 /obj/item/holder/mouse
-	name = "mouse"
+	name = "rat"
 	desc = "It's a small, disease-ridden rodent."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "mouse_gray"

@@ -90,6 +90,11 @@
 	desc = "A warning sign which reads 'BIOHAZARD'"
 	icon_state = "bio"
 
+/obj/structure/sign/mesonsreq
+	name = "\improper EYE PROTECTION REQUIRED"
+	desc = "A warning sign indicating meson goggles must be warn within the area."
+	icon_state = "mesonwarn"
+
 /obj/structure/sign/electricshock
 	name = "\improper HIGH VOLTAGE"
 	desc = "A warning sign which reads 'HIGH VOLTAGE'"

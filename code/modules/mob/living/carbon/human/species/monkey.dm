@@ -17,7 +17,11 @@
 	can_craft = FALSE
 	is_small = 1
 	has_fine_manipulation = 0
-	ventcrawler = VENTCRAWLER_NUDE
+	ventcrawler = VENTCRAWLER_ALWAYS
+	warning_low_pressure = -INFINITY
+	hazard_low_pressure = -INFINITY
+	hazard_high_pressure = INFINITY
+	warning_high_pressure = INFINITY
 	dietflags = DIET_OMNI
 	show_ssd = 0
 	eyes = "blank_eyes"
@@ -107,6 +111,33 @@
 		"appendix" = /obj/item/organ/internal/appendix,
 		"eyes" =     /obj/item/organ/internal/eyes/vulpkanin/wolpin //Vulpkanin monkey-forms are uniquely colourblind and have excellent darksight, which is why they need a subtype of their greater-form's organ..
 		)
+
+/datum/species/monkey/skaven
+	name = "Skaven"
+	name_plural = "Skaven"
+
+	icobase = 'icons/mob/human_races/monkeys/r_skaven.dmi'
+	deform = 'icons/mob/human_races/monkeys/r_skaven.dmi'
+
+	greater_form = /datum/species/human
+	default_language = "Skaven"
+	flesh_color = "#966464"
+	base_color = "#000000"
+	tail = "skaventail"
+	reagent_tag = PROCESS_ORG
+	species_traits = list(RADIMMUNE, VIRUSIMMUNE)
+	has_organ = list(
+		"heart" =    /obj/item/organ/internal/heart/vulpkanin,
+		"lungs" =    /obj/item/organ/internal/lungs/vulpkanin,
+		"liver" =    /obj/item/organ/internal/liver/vulpkanin,
+		"kidneys" =  /obj/item/organ/internal/kidneys/vulpkanin,
+		"brain" =    /obj/item/organ/internal/brain/vulpkanin,
+		"appendix" = /obj/item/organ/internal/appendix,
+		"eyes" =     /obj/item/organ/internal/eyes/vulpkanin/wolpin //Vulpkanin monkey-forms are uniquely colourblind and have excellent darksight, which is why they need a subtype of their greater-form's organ..
+		)
+	scream_verb = "screeches"
+	male_scream_sound = 'sound/voice/skaven_scream1.ogg'
+	female_scream_sound = 'sound/voice/skaven_scream2.ogg'
 
 
 /datum/species/monkey/skrell
