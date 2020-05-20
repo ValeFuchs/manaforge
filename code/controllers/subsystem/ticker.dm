@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(ticker)
 	'sound/music/title4.ogg',\
 	'sound/music/title6.ogg',\
 	'sound/music/title7.ogg',\
-	'sound/music/title5.ogg',\)
+	'sound/music/title5.ogg')
 	// Map name
 	if(GLOB.using_map && GLOB.using_map.name)
 		GLOB.map_name = "[GLOB.using_map.name]"
