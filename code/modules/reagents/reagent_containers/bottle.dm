@@ -16,7 +16,7 @@
 	name = "romerol bottle"
 	desc = "A small bottle of Romerol. The REAL zombie powder."
 	list_reagents = list("romerol" = 30)
-	
+
 /obj/item/reagent_containers/glass/bottle/on_reagent_change()
 	update_icon()
 
@@ -260,6 +260,18 @@
 	desc = "A small bottle of plasma in dust form. Extremely toxic and reacts with micro-organisms inside blood."
 	icon_state = "wide_bottle"
 	list_reagents = list("plasma_dust" = 30)
+
+/obj/item/reagent_containers/glass/bottle/warpstone
+	name = "warpstone dust bottle"
+	desc = "A small bottle of warpstone dust. You can hear a faint humming coming from it."
+	icon_state = "wide_bottle"
+	list_reagents = list("warpstone" = 30)
+
+/obj/item/reagent_containers/glass/bottle/moulder
+	name = "morphogenic compound bottle"
+	desc = "A bottle of morphogenic compound. Reshapes organic life like putty."
+	icon_state = "bottle"
+	list_reagents = list("moulder" = 30)
 
 /obj/item/reagent_containers/glass/bottle/diphenhydramine
 	name = "diphenhydramine bottle"

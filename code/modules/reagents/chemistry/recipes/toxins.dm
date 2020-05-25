@@ -154,18 +154,53 @@
 	result_amount = 3
 	mix_message = "The substance turns neon green and bubbles unnervingly."
 
-/datum/chemical_reaction/stable_mustagen
-	name = "Stable mutagen"
-	id = "stable_mutagen"
-	result = "stable_mutagen"
-	required_reagents = list("mutagen" = 1, "lithium" = 1, "acetone" = 1, "bromine" = 1)
+/datum/chemical_reaction/moulder
+	name = "Morphogenic compound"
+	id = "moulder"
+	result = "moulder"
+	required_reagents = list("carbon" = 1, "water" = 1, "warpstone" = 1)
 	result_amount = 3
-	mix_message = "The substance turns a drab green and begins to bubble."
+	mix_message = "Loud hissing can be heard as sparks fly out of the beaker."
 
-/datum/chemical_reaction/stable_mustagen/stable_mustagen2
-	id = "stable_mutagen2"
-	required_reagents = list("mutadone" = 3, "lithium" = 1)
-	result_amount = 4
+/datum/chemical_reaction/moulders
+	name = "Slimeogenic compound"
+	id = "moulders"
+	result = "moulders"
+	required_reagents = list("moulder" = 1, "slimejelly" = 1)
+	result_amount = 2
+	mix_message = "The solution becomes more viscous and slimey."
+
+/datum/chemical_reaction/moulderc
+	name = "Corgogenic compound"
+	id = "moulderc"
+	result = "moulderc"
+	required_reagents = list("moulder" = 1, "toiletwater" = 1)
+	result_amount = 2
+	mix_message = "The solution starts to smell like wet dog."
+
+/datum/chemical_reaction/moulderr
+	name = "Robogenic compound"
+	id = "moulderr"
+	result = "moulderr"
+	required_reagents = list("moulder" = 1, "oil" = 1)
+	result_amount = 2
+	mix_message = "The solution turns black and starts to smell like a mechanic's garage."
+
+/datum/chemical_reaction/moulderm
+	name = "Devolving compound"
+	id = "moulderm"
+	result = "moulderm"
+	required_reagents = list("moulder" = 1, "space_drugs" = 1)
+	result_amount = 2
+	mix_message = "<span class='danger'>The solution screeches very loudly before falling silent.</span>"
+
+/datum/chemical_reaction/moulderf
+	name = "Foxogenic compound"
+	id = "moulderf"
+	result = "moulderf"
+	required_reagents = list("moulder" = 1, "antihol" = 1)
+	result_amount = 2
+	mix_message = "You're not sure why, but the solution looks much cuter now."
 
 /datum/chemical_reaction/rotatium
 	name = "Rotatium"

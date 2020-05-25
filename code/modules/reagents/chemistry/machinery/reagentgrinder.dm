@@ -33,6 +33,7 @@
 			/obj/item/grown/nettle/basic = list("sacid" = 0),
 			/obj/item/grown/nettle/death = list("facid" = 0, "sacid" = 0),
 			/obj/item/grown/novaflower = list("capsaicin" = 0, "condensedcapsaicin" = 0),
+			/obj/item/supermatter_crystal/splinter = list("warpstone" = 20),
 
 			//Blender Stuff
 			/obj/item/reagent_containers/food/snacks/grown/tomato = list("ketchup" = 0),
@@ -52,6 +53,7 @@
 
 			//All types that you can put into the grinder to transfer the reagents to the beaker. !Put all recipes above this.!
 			/obj/item/slime_extract = list(),
+			//obj/item/supermatter_crystal = list(),
 			/obj/item/reagent_containers/food = list(),
 			/obj/item/reagent_containers/honeycomb = list()
 	)
@@ -475,6 +477,19 @@
 						if (i == round(O.amount, 1))
 								remove_object(O)
 								break
+
+		//Warpstone
+		for (var/obj/item/supermatter_crystal/splinter/O in holdingitems)
+				var/allowed = get_allowed_by_id(O)
+				if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
+						return
+				for (var/r_id in allowed)
+						var/space = beaker.reagents.maximum_volume - beaker.reagents.total_volume
+						var/amount = allowed[r_id]
+						beaker.reagents.add_reagent(r_id,min(amount*efficiency, space))
+						remove_object(O)
+						break
+
 		//Plants
 		for (var/obj/item/grown/O in holdingitems)
 				if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)

@@ -7,7 +7,7 @@
 	agent = "Shenanigans"
 	viable_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/alien)
 	severity = HARMFUL
-	stage_prob = 10
+	stage_prob = 5
 	visibility_flags = HIDDEN_SCANNER|HIDDEN_PANDEMIC
 	disease_flags = CURABLE
 	var/list/stage1 = list("You feel unremarkable.")
@@ -113,12 +113,12 @@
 
 /datum/disease/transformation/robot
 
-	name = "Robotic Transformation"
+	name = "Cellular Morphogenesis"
 	cure_text = "An injection of copper."
 	cures = list("copper")
 	cure_chance = 5
-	agent = "R2D2 Nanomachines"
-	desc = "This disease, actually acute nanomachine infection, converts the victim into a cyborg."
+	agent = "Nanomachines SON"
+	desc = "This compound converts the victim into a cyborg."
 	severity = DANGEROUS
 	visibility_flags = 0
 	stage1	= null
@@ -173,7 +173,7 @@
 
 
 /datum/disease/transformation/slime
-	name = "Advanced Mutation Transformation"
+	name = "Cellular Morphogenesis"
 	cure_text = "frost oil"
 	cures = list("frostoil")
 	cure_chance = 80
@@ -203,11 +203,11 @@
 					human.set_species(/datum/species/slime)
 
 /datum/disease/transformation/corgi
-	name = "The Barkening"
-	cure_text = "Death"
-	cures = list("adminordrazine")
-	agent = "Fell Doge Majicks"
-	desc = "This disease transforms the victim into a corgi."
+	name = "Cellular Morphogenesis"
+	cure_text = "Spaceacillin"
+	cures = list("spaceacillin")
+	agent = "Advanced Mutation Toxin"
+	desc = "This chemical transforms the victim into a corgi."
 	visibility_flags = 0
 	stage1	= list("BARK.")
 	stage2	= list("You feel the need to wear silly hats.")
@@ -241,3 +241,32 @@
 	stage4	= list("<span class='danger'>You're ravenous.</span>")
 	stage5	= list("<span class='danger'>You have become a morph.</span>")
 	new_form = /mob/living/simple_animal/hostile/morph
+
+/datum/disease/transformation/fox
+	name = "Cellular Morphogenesis"
+	cure_text = "Spaceacillin"
+	cures = list("spaceacillin")
+	agent = "Advanced Mutation Toxin"
+	desc = "This chemical transforms the victim into a fox."
+	visibility_flags = 0
+	stage1	= list("YIP.")
+	stage2	= list("You feel sneaky.")
+	stage3	= list("<span class='danger'>Must... eat... MEAT....</span>", "<span class='danger'>YAP</span>")
+	stage4	= list("<span class='danger'>You are becoming a fox.</span>")
+	stage5	= list("<span class='danger'>Ack-Ack-Ack-Ackawoooo</span>")
+	new_form = /mob/living/simple_animal/pet/dog/fox
+
+/datum/disease/transformation/fox/stage_act()
+	..()
+	switch(stage)
+		if(3)
+			if(ishuman(affected_mob))
+				var/mob/living/carbon/human/human = affected_mob
+				if(!istype(human, /datum/species/vulpkanin))
+					human.set_species(/datum/species/vulpkanin)
+
+			if(prob(80))
+				affected_mob.say(pick("YIP", "Tchoff!"))
+		if(4)
+			if(prob(50))
+				affected_mob.say(pick("Ack-Ack-Ack-Ackawoooo", "AUUUUUU"))

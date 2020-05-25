@@ -19,6 +19,7 @@
 	jobtype = /datum/job/chaplain
 
 	uniform = /obj/item/clothing/under/rank/chaplain
+	suit = /obj/item/clothing/suit/imperium_monk
 	shoes = /obj/item/clothing/shoes/black
 	l_ear = /obj/item/radio/headset/headset_service
 	pda = /obj/item/pda/chaplain
@@ -26,7 +27,7 @@
 		/obj/item/camera/spooky = 1,
 		/obj/item/nullrod = 1
 	)
-	
+
 /datum/outfit/job/chaplain/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 
@@ -41,8 +42,8 @@
 		var/obj/item/storage/bible/B = new /obj/item/storage/bible(H)
 		H.equip_to_slot_or_del(B, slot_l_hand)
 
-		var/religion_name = "Christianity"
-		var/new_religion = sanitize(copytext(input(H, "You are the Chaplain. What name do you give your beliefs? Default is Christianity.", "Name change", religion_name),1,MAX_NAME_LEN))
+		var/religion_name = "Mechanicum"
+		var/new_religion = sanitize(copytext(input(H, "You are the Chaplain. What name do you give your beliefs? Default is Mechanicum.", "Name change", religion_name),1,MAX_NAME_LEN))
 
 		if(!new_religion)
 			new_religion = religion_name
@@ -61,7 +62,11 @@
 			if("chaos")
 				B.name = "The Book of Lorgar"
 			if("imperium")
-				B.name = "Uplifting Primer"
+				B.name = "Lectitio Divinitatus"
+			if("machine cult")
+				B.name = pick("Doctrina Mechanata", "Omnicopia", "Lexicanum Automata")
+			if("mechanicum")
+				B.name = pick("Doctrina Mechanata", "Omnicopia", "Lexicanum Automata")
 			if("toolboxia")
 				B.name = "Toolbox Manifesto Robusto"
 			if("science")
@@ -70,10 +75,10 @@
 				B.name = "The Holy Book of [new_religion]"
 		feedback_set_details("religion_name","[new_religion]")
 
-		var/deity_name = "Space Jesus"
-		var/new_deity = sanitize(copytext(input(H, "Who or what do you worship? Default is Space Jesus.", "Name change", deity_name), 1, MAX_NAME_LEN))
+		var/deity_name = "Omnissiah"
+		var/new_deity = sanitize(copytext(input(H, "Who or what do you worship? Default is Omnissiah.", "Name change", deity_name), 1, MAX_NAME_LEN))
 
-		if((length(new_deity) == 0) || (new_deity == "Space Jesus") )
+		if((length(new_deity) == 0) || (new_deity == "Omnissiah") )
 			new_deity = deity_name
 		B.deity_name = new_deity
 
@@ -88,7 +93,7 @@
 		while(!accepted)
 			if(!B || !H.client)
 				break // prevents possible runtime errors
-			new_book_style = input(H, "Which bible style would you like?") in list("Bible", "Koran", "Scrapbook", "Creeper", "White Bible", "Holy Light", "PlainRed", "Tome", "The King in Yellow", "Ithaqua", "Scientology", "the bible melts", "Necronomicon", "Greentext")
+			new_book_style = input(H, "Which bible style would you like?") in list("Mechanicum", "Koran", "Scrapbook", "Bible", "White Bible", "Holy Light", "PlainRed", "Tome", "The King in Yellow", "Ithaqua", "Scientology", "the bible melts", "Necronomicon", "Greentext")
 			switch(new_book_style)
 				if("Koran")
 					B.icon_state = "koran"
@@ -100,9 +105,13 @@
 				if("Scrapbook")
 					B.icon_state = "scrapbook"
 					B.item_state = "scrapbook"
-				if("Creeper")
+				if("Mechanicum")
 					B.icon_state = "creeper"
 					B.item_state = "syringe_kit"
+					for(var/area/chapel/main/A in world)
+						for(var/turf/T in A.contents)
+							if(T.icon_state == "carpetsymbol")
+								T.dir = 8
 				if("White Bible")
 					B.icon_state = "white"
 					B.item_state = "syringe_kit"
@@ -124,10 +133,6 @@
 				if("Scientology")
 					B.icon_state = "scientology"
 					B.item_state = "scientology"
-					for(var/area/chapel/main/A in world)
-						for(var/turf/T in A.contents)
-							if(T.icon_state == "carpetsymbol")
-								T.dir = 8
 				if("the bible melts")
 					B.icon_state = "melted"
 					B.item_state = "melted"

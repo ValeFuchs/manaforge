@@ -196,6 +196,14 @@
 	result_amount = 3
 	mix_message = "The substance begins moving on its own somehow."
 
+/datum/chemical_reaction/miraclem
+	name = "Miracle Matter"
+	id = "miraclem"
+	result = "miraclem"
+	required_reagents = list("omnizine" = 1, "warpstone" = 1, "strange_reagent" = 1)
+	result_amount = 4
+	mix_message = "The solution glows and shifts through multiple different colours before becoming a faint pink."
+
 /datum/chemical_reaction/life
 	name = "Life"
 	id = "life"

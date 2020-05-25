@@ -99,7 +99,7 @@
 	toolspeed = 0.5
 
 /obj/item/scalpel/supermatter
-	name = "Wurtzite Scalpel"
+	name = "wurtzite lancet"
 	desc = "A specialised scalpel capable of touching warpstone without disintigrating. You can use it to take samples."
 	icon_state = "scalpelsm"
 	damtype = "fire"

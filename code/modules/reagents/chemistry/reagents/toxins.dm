@@ -184,19 +184,26 @@
 	return ..()
 
 
-/datum/reagent/stable_mutagen
-	name = "Stable mutagen"
-	id = "stable_mutagen"
-	description = "Just the regular, boring sort of mutagenic compound.  Works in a completely predictable manner."
+/datum/reagent/moulder
+	name = "Morphogenic compound"
+	id = "moulder"
+	description = "A substance capable of reshaping the body on demand, provided it's mixed with the correct catalyst."
 	reagent_state = LIQUID
 	color = "#7DFF00"
-	taste_description = "slime"
+	taste_description = "chaos... and limes?"
 
-/datum/reagent/stable_mutagen/on_mob_life(mob/living/M)
+/datum/reagent/moulder/on_mob_life(mob/living/M)
 	if(!ishuman(M) || !M.dna)
 		return
+	M.AdjustJitter(20)
+	M.Stuttering(15)
+	M.Confused(15)
+	to_chat(M, "<span class='danger'>You feel [pick("weak", "horribly weak", "numb", "like you can barely move", "tingly")].</span>")
 	M.apply_effect(2*REAGENTS_EFFECT_MULTIPLIER, IRRADIATE, negate_armor = 1)
 	if(current_cycle == 10 && islist(data))
+		M.Weaken(20)
+		M.Stun(20)
+		to_chat(M, "<span class='danger'>You are consumed with searing pain as your bones shift and your body changes!</span>")
 		if(istype(data["dna"], /datum/dna))
 			var/mob/living/carbon/human/H = M
 			var/datum/dna/D = data["dna"]
@@ -209,14 +216,88 @@
 				H.dna.UpdateUI()
 				H.sync_organ_dna(TRUE)
 				H.UpdateAppearance()
+			M.AdjustJitter(0)
+			M.Stuttering(0)
+			M.Confused(0)
 
 	return ..()
 
-/datum/reagent/stable_mutagen/on_tick()
+/datum/reagent/moulder/on_tick()
 	var/datum/reagent/blood/B = locate() in holder.reagent_list
 	if(B && islist(B.data) && !data)
 		data = B.data.Copy()
 	..()
+
+/datum/reagent/moulders
+	name = "Slimeogenic compound"
+	id = "moulders"
+	description = "A substance capable of turning the user into pure slime... disgusting."
+	reagent_state = LIQUID
+	color = "#00ffb7"
+	taste_description = "utterly disgusting slime"
+
+/datum/reagent/moulders/on_mob_life(mob/living/M)
+	if(!ishuman(M) || !M.dna)
+		return
+	M.apply_effect(2*REAGENTS_EFFECT_MULTIPLIER, IRRADIATE, negate_armor = 1)
+	M.ForceContractDisease(new /datum/disease/transformation/slime)
+
+/datum/reagent/moulderc
+	name = "Corgogenic compound"
+	id = "moulderc"
+	description = "A substance capable of turning the user fuzzy and four legged."
+	reagent_state = LIQUID
+	color = "#ffc400"
+	taste_description = "you just licked a dog. Gross!"
+
+/datum/reagent/moulderc/on_mob_life(mob/living/M)
+	if(!ishuman(M) || !M.dna)
+		return
+	M.apply_effect(2*REAGENTS_EFFECT_MULTIPLIER, IRRADIATE, negate_armor = 1)
+	M.ForceContractDisease(new /datum/disease/transformation/corgi)
+
+/datum/reagent/moulderr
+	name = "Robogenic compound"
+	id = "moulderr"
+	description = "A substance capable of turning the user into a perfect, immortal machine."
+	reagent_state = LIQUID
+	color = "#000000"
+	taste_description = "iron and oil."
+
+/datum/reagent/moulderr/on_mob_life(mob/living/M)
+	if(!ishuman(M) || !M.dna)
+		return
+	M.apply_effect(2*REAGENTS_EFFECT_MULTIPLIER, IRRADIATE, negate_armor = 1)
+	M.ForceContractDisease(new /datum/disease/transformation/robot)
+
+/datum/reagent/moulderm
+	name = "Devolving compound"
+	id = "moulderm"
+	description = "A substance capable of devolving the user."
+	reagent_state = LIQUID
+	color = "#f6ff4a"
+	taste_description = "bananas and... time flowing backwards"
+
+/datum/reagent/moulderm/on_mob_life(mob/living/M)
+	if(!ishuman(M) || !M.dna)
+		return
+	M.apply_effect(2*REAGENTS_EFFECT_MULTIPLIER, IRRADIATE, negate_armor = 1)
+	M.ForceContractDisease(new /datum/disease/transformation/jungle_fever)
+
+/datum/reagent/moulderf
+	name = "Foxogenic compound"
+	id = "moulderf"
+	description = "A substance capable of turning the user into a fox."
+	reagent_state = LIQUID
+	color = "#ff5233"
+	taste_description = "bad Norwegian pop songs"
+
+/datum/reagent/moulderf/on_mob_life(mob/living/M)
+	if(!ishuman(M) || !M.dna)
+		return
+	M.apply_effect(2*REAGENTS_EFFECT_MULTIPLIER, IRRADIATE, negate_armor = 1)
+	M.ForceContractDisease(new /datum/disease/transformation/fox)
+
 
 /datum/reagent/romerol
 	name = "romerol"
@@ -266,6 +347,36 @@
 	if(volume >= 3 && !isspaceturf(T))
 		new /obj/effect/decal/cleanable/greenglow(T)
 
+/datum/reagent/supermatter
+	name ="Warpstone"
+	id = "warpstone"
+	description = "Finely powdered warpstone dust. It is highly volatile, with extremely mutagenic properties."
+	reagent_state = SOLID
+	color = "#06ba1e" // rgb: 6, 186, 30
+	taste_mult = 0
+	taste_description = "pure chaos"
+
+/datum/reagent/supermatter/on_mob_life(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	M.apply_effect(50, IRRADIATE, negate_armor = 1)
+	if(prob(5))
+		M.emote("drool")
+	if(prob(10))
+		to_chat(M, "<span class='danger'>You cannot breathe!</span>")
+		M.AdjustLoseBreath(1)
+		M.emote("gasp")
+	if(prob(8))
+		to_chat(M, "<span class='danger'>You feel horrendously weak!</span>")
+		update_flags |= M.Stun(2, FALSE)
+		update_flags |= M.adjustToxLoss(2, FALSE)
+	return ..() | update_flags
+
+/datum/reagent/supermatter/reaction_mob(mob/living/M, method=REAGENT_TOUCH, volume)
+	if(method == REAGENT_TOUCH)
+		M.adjust_fire_stacks(volume / 3)
+		M.IgniteMob()
+		return
+	..()
 
 /datum/reagent/lexorin
 	name = "Lexorin"

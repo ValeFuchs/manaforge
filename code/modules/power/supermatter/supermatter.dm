@@ -758,7 +758,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			user.visible_message("<span class='danger'>The [W] flashes out of existence on contact with \the [src], resonating with a horrible sound...</span>",\
 				"<span class='danger'>Oops! The [W] flashes out of existence on contact with \the [src], setting you on fire! That was clumsy of you!</span>")
 			playsound(src, 'sound/effects/supermatter.ogg', 150, TRUE)
-			user.adjust_fire_stacks(1)
+			user.adjust_fire_stacks(3)
 			user.IgniteMob()
 			qdel(W)
 			return
@@ -940,17 +940,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 //Warpstone subtypes//
 //////////////////////
 
-/obj/item/supermatter_crystal/splinter
-	name = "warpstone splinter"
-	desc = "A splinter of warpstone cut off from a larger crystal. Even this tiny shard is too dangerous to touch without special equipment."
-	icon = 'icons/obj/supermatter.dmi'
-	icon_state = "darkmatter_splinter"
-	item_state = "darkmatter_splinter"
-	layer = ABOVE_MOB_LAYER
-	w_class = WEIGHT_CLASS_TINY
-	origin_tech = "materials=4;powerstorage=3"
-
-
 /obj/machinery/power/supermatter_crystal/shard
 	name = "warpstone shard"
 	desc = "A strangely translucent and iridescent crystal that looks like it used to be part of a larger structure. <span class='danger'>You get headaches just from looking at it, but it's hard to stop staring.</span>"
@@ -963,7 +952,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 /obj/machinery/power/supermatter_crystal/shard/science
 	name = "stabilized warpstone shard"
-	desc = "A warpstone shard contained within a specialized Gellar Field for use in experiments. Even stable, it is still very dangerous. <span class='danger'>You get headaches just from looking at it, but it's hard to stop staring.</span>"
+	desc = "A warpstone shard contained within a specialized gellar field for use in experiments. Even stable, it is still very dangerous. <span class='danger'>You get headaches just from looking at it, but it's hard to stop staring.</span>"
 	icon_state = "darkmatter_shard"
 	base_icon_state = "darkmatter_shard"
 	anchored = TRUE

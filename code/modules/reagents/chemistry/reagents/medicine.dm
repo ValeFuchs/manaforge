@@ -350,6 +350,66 @@
 			update_flags |= M.Weaken(3, FALSE)
 	return list(effect, update_flags)
 
+//God heals, don't expect it to come easily though
+/datum/reagent/medicine/miraclem
+	name = "Miracle Matter"
+	id = "miraclem"
+	description = "Perhaps the most powerful healing agent in the known galaxy, this mysterious liquid can treat any injury and is rumoured to even bring people back from the dead."
+	reagent_state = LIQUID
+	color = "#ffebfb"
+	metabolization_rate = 0.2
+	addiction_chance = 1
+	addiction_chance_additional = 20
+	addiction_threshold = 5
+	taste_description = "incomprehensible"
+	var/revive_type = SENTIENCE_ORGANIC
+
+/datum/reagent/medicine/miraclem/on_mob_life(mob/living/M, method = REAGENT_TOUCH)
+	var/update_flags = STATUS_UPDATE_NONE
+	update_flags |= M.adjustToxLoss(-10*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	update_flags |= M.adjustOxyLoss(-10*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	update_flags |= M.adjustBruteLoss(-20*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	update_flags |= M.adjustFireLoss(-20*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	update_flags |= M.adjustBrainLoss(-40, FALSE)
+	update_flags |= M.adjustCloneLoss(-40, FALSE)
+	update_flags |= M.AdjustParalysis(-10, FALSE)
+	update_flags |= M.AdjustStunned(-10, FALSE)
+	update_flags |= M.AdjustWeakened(-10, FALSE)
+	update_flags |= M.SetSleeping(0, FALSE)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!(NO_BLOOD in H.dna.species.species_traits))//do not restore blood on things with no blood by nature.
+			if(H.blood_volume < BLOOD_VOLUME_NORMAL)
+				H.blood_volume += 1
+	if(prob(50))
+		M.AdjustLoseBreath(-10)
+	if(prob(10))
+		M.rejuvenate()
+
+	//Now for the main event
+	if(isanimal(M) && method == REAGENT_TOUCH)
+		var/mob/living/simple_animal/SM = M
+		if(SM.sentience_type != revive_type) // No reviving Ash Drakes for you
+			return
+		if(SM.stat == DEAD)
+			SM.revive()
+			SM.loot.Cut() //no farming
+			SM.visible_message("<span class='warning'>[SM] seems to rise from the dead!</span>")
+
+	if(iscarbon(M))
+		if(method == REAGENT_INGEST || (method == REAGENT_TOUCH))
+			if(M.stat == DEAD)
+				if(!M.suiciding && !(NOCLONE in M.mutations) && (!M.mind || M.mind && M.mind.is_revivable()))
+					M.visible_message("<span class='warning'>[M] seems to rise from the dead!</span>")
+					M.setOxyLoss(0)
+					M.setToxLoss(rand(0, 15))
+					//No strings attached here, it's called Miracle Matter for a reason
+					M.grab_ghost()
+					M.update_revive()
+					add_attack_logs(M, M, "Revived with strange reagent") //Yes, the logs say you revived yourself.
+
+	return ..() | update_flags
+
 /datum/reagent/medicine/calomel
 	name = "Calomel"
 	id = "calomel"
