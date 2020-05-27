@@ -12,6 +12,20 @@
 	e.start()
 	holder.clear_reagents()
 
+/datum/chemical_reaction/explosion_warpstone
+	name = "Explosion"
+	id = "explosion_warpstone"
+	result = null
+	required_reagents = list("warpstone" = 1, "plasma_dust" = 1)
+	result_amount = 2
+	mix_message = "The mixture explodes!"
+
+/datum/chemical_reaction/explosion_warpstone/on_reaction(datum/reagents/holder, created_volume)
+	var/datum/effect_system/reagents_explosion/e = new()
+	e.set_up(round (created_volume/10, 1), holder.my_atom, 0, 0)
+	e.start()
+	holder.clear_reagents()
+
 /datum/chemical_reaction/emp_pulse
 	name = "EMP Pulse"
 	id = "emp_pulse"

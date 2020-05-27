@@ -202,6 +202,14 @@
 	result_amount = 2
 	mix_message = "You're not sure why, but the solution looks much cuter now."
 
+/datum/chemical_reaction/moulderW
+	name = "Unstable morphogenic compound"
+	id = "moulderW"
+	result = "moulderW"
+	required_reagents = list("carbon" = 1, "ammonia" = 1, "warpstone" = 1)
+	result_amount = 2
+	mix_message = "Uhhh... that didn't sound good."
+
 /datum/chemical_reaction/rotatium
 	name = "Rotatium"
 	id = "Rotatium"

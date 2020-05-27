@@ -219,6 +219,8 @@
 			M.AdjustJitter(0)
 			M.Stuttering(0)
 			M.Confused(0)
+		else
+			M.ForceContractDisease(new /datum/disease/transformation/skaven)
 
 	return ..()
 
@@ -297,6 +299,20 @@
 		return
 	M.apply_effect(2*REAGENTS_EFFECT_MULTIPLIER, IRRADIATE, negate_armor = 1)
 	M.ForceContractDisease(new /datum/disease/transformation/fox)
+
+/datum/reagent/moulderW
+	name = "Unstable morphogenic compound"
+	id = "moulderW"
+	description = "The integrity of this morphogenic compound has severely degraded."
+	reagent_state = LIQUID
+	color = "#ff5233"
+	taste_description = "...precious warpstone"
+
+/datum/reagent/moulderW/on_mob_life(mob/living/M)
+	if(!ishuman(M) || !M.dna)
+		return
+	M.apply_effect(2*REAGENTS_EFFECT_MULTIPLIER, IRRADIATE, negate_armor = 1)
+	M.ForceContractDisease(new /datum/disease/transformation/skaven)
 
 
 /datum/reagent/romerol

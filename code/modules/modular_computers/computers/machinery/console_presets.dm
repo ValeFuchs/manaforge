@@ -50,6 +50,7 @@
 	hard_drive.store_file(new/datum/computer_file/program/nttransfer())
 	hard_drive.store_file(new/datum/computer_file/program/chatclient())
 	hard_drive.store_file(new/datum/computer_file/program/aidiag())
+	hard_drive.store_file(new/datum/computer_file/program/scisupermatter_monitor())
 
 
 // ===== COMMAND CONSOLE =====

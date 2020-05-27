@@ -53,6 +53,7 @@
 			if(istype(W, /obj/item/implant))
 				qdel(W)
 				continue
+			affected_mob.unEquip(W)
 			W.layer = initial(W.layer)
 			W.plane = initial(W.plane)
 			W.loc = affected_mob.loc
@@ -265,8 +266,36 @@
 				if(!istype(human, /datum/species/vulpkanin))
 					human.set_species(/datum/species/vulpkanin)
 
-			if(prob(80))
-				affected_mob.say(pick("YIP", "Tchoff!"))
+			if(prob(30))
+				affected_mob.say(pick("YIP", "Tchoff!", "Geck"))
 		if(4)
-			if(prob(50))
+			if(prob(20))
 				affected_mob.say(pick("Ack-Ack-Ack-Ackawoooo", "AUUUUUU"))
+
+/datum/disease/transformation/skaven
+
+	name = "Severe Warpstone Corruption"
+	cure_text = "Spaceacillin & Glycerol"
+	cures = list("spaceacillin", "glycerol")
+	cure_chance = 5
+	agent = "Someone play-toyed with precious warpstone too long."
+	desc = "This disease changes the victim into a nasty little skaven"
+	severity = BIOHAZARD
+	visibility_flags = 0
+	stage1	= null
+	stage2	= list("Your throat feels scratchy.", "<span class='danger'>No-furs...die-die...</span>")
+	stage3	= list("<span class='danger'>Your teeth feel mishapen.</span>", "Your skin feels itchy.", "<span class='danger'>I am... greatest-BEST on station-thing.</span>")
+	stage4	= list("<span class='danger'>Your front teeth barely fit in your mouth.</span>", "<span class='danger'>Your blood boils!</span>", "<span class='danger'>Hate no-furs... HATE EVERYTHING</span>")
+	stage5	= list("<span class='danger'>Must gather-collect precious warpstone. All for me-me!</span>")
+	new_form = /mob/living/carbon/human/skaven
+
+/datum/disease/transformation/skaven/stage_act()
+	..()
+	switch(stage)
+		if(3)
+			if(prob(4))
+				to_chat(affected_mob, "<span class='danger'>You feel a stabbing pain in your head.</span>")
+				affected_mob.Paralyse(2)
+		if(4)
+			if(prob(3))
+				affected_mob.say(pick("You look-seem... delicious.", "Must spread... own corruption.", "SCREEEEECH!"))

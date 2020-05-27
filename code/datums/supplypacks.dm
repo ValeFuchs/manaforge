@@ -1012,6 +1012,16 @@ GLOBAL_LIST_INIT(all_supply_groups, list(SUPPLY_EMERGENCY,SUPPLY_SECURITY,SUPPLY
     containertype = /obj/structure/largecrate
     containername = "oil tank crate"
 
+/datum/supply_packs/science/wurtzite
+	name = "Wurtzite Supply Crate"
+	cost = 25
+	contains = list(/obj/item/clothing/gloves/color/supermatter,
+					/obj/item/clothing/gloves/color/supermatter,
+					/obj/item/clothing/gloves/color/supermatter,
+					/obj/item/scalpel/supermatter)
+	containername = "wurtzite supply crate"
+
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Organic /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////

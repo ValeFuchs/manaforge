@@ -1,5 +1,5 @@
-/datum/computer_file/program/supermatter_monitor
-	filename = "smmonitor"
+/datum/computer_file/program/scisupermatter_monitor
+	filename = "ssmmonitor"
 	filedesc = "Warpstone Monitoring"
 	ui_header = "smmon_0.gif"
 	program_icon_state = "smmon_0"
@@ -10,10 +10,10 @@
 	size = 5
 	var/last_status = SUPERMATTER_INACTIVE
 	var/list/supermatters
-	var/obj/machinery/power/supermatter_crystal/engine/active		// Currently selected supermatter crystal.
+	var/obj/machinery/power/supermatter_crystal/shard/science/active		// Currently selected supermatter crystal.
 
 
-/datum/computer_file/program/supermatter_monitor/process_tick()
+/datum/computer_file/program/scisupermatter_monitor/process_tick()
 	..()
 	var/new_status = get_status()
 	if(last_status != new_status)
@@ -25,22 +25,22 @@
 		if(istype(computer))
 			computer.update_icon()
 
-/datum/computer_file/program/supermatter_monitor/run_program(mob/living/user)
+/datum/computer_file/program/scisupermatter_monitor/run_program(mob/living/user)
 	. = ..(user)
 	refresh()
 
-/datum/computer_file/program/supermatter_monitor/kill_program(forced = FALSE)
+/datum/computer_file/program/scisupermatter_monitor/kill_program(forced = FALSE)
 	active = null
 	supermatters = null
 	..()
 
 // Refreshes list of active supermatter crystals
-/datum/computer_file/program/supermatter_monitor/proc/refresh()
+/datum/computer_file/program/scisupermatter_monitor/proc/refresh()
 	supermatters = list()
 	var/turf/T = get_turf(nano_host())
 	if(!T)
 		return
-	for(var/obj/machinery/power/supermatter_crystal/engine/S in SSair.atmos_machinery)
+	for(var/obj/machinery/power/supermatter_crystal/shard/science/S in SSair.atmos_machinery)
 		// Delaminating, not within coverage, not on a tile.
 		if(!(is_station_level(S.z) || is_mining_level(S.z)  || atoms_share_level(S, T) || !istype(S.loc, /turf/simulated/)))
 			continue
@@ -49,12 +49,12 @@
 	if(!(active in supermatters))
 		active = null
 
-/datum/computer_file/program/supermatter_monitor/proc/get_status()
+/datum/computer_file/program/scisupermatter_monitor/proc/get_status()
 	. = SUPERMATTER_INACTIVE
-	for(var/obj/machinery/power/supermatter_crystal/engine/S in supermatters)
+	for(var/obj/machinery/power/supermatter_crystal/shard/science/S in supermatters)
 		. = max(., S.get_status())
 
-/datum/computer_file/program/supermatter_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/computer_file/program/scisupermatter_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/headers)
@@ -65,7 +65,7 @@
 		ui.open()
 
 
-/datum/computer_file/program/supermatter_monitor/ui_data()
+/datum/computer_file/program/scisupermatter_monitor/ui_data()
 	var/list/data = get_header_data()
 
 	if(istype(active))
@@ -106,7 +106,7 @@
 			data["SM_gas_OTHER"] = 0
 	else
 		var/list/SMS = list()
-		for(var/obj/machinery/power/supermatter_crystal/engine/S in supermatters)
+		for(var/obj/machinery/power/supermatter_crystal/shard/science/S in supermatters)
 			var/area/A = get_area(S)
 			if(A)
 				SMS.Add(list(list(
@@ -121,7 +121,7 @@
 
 	return data
 
-/datum/computer_file/program/supermatter_monitor/Topic(href, href_list)
+/datum/computer_file/program/scisupermatter_monitor/Topic(href, href_list)
 	if(..())
 		return TRUE
 
@@ -133,7 +133,7 @@
 		return TRUE
 	if(href_list["set"])
 		var/newuid = text2num(href_list["set"])
-		for(var/obj/machinery/power/supermatter_crystal/engine/S in supermatters)
+		for(var/obj/machinery/power/supermatter_crystal/shard/science/S in supermatters)
 			if(S.uid == newuid)
 				active = S
 		return TRUE

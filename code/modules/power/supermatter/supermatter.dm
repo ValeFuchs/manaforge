@@ -520,6 +520,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		if(!istype(eyes))
 			continue
 		l.Hallucinate(min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)))))
+		if(prob(1))
+			l.ForceContractDisease(new /datum/disease/transformation/skaven)
 
 	for(var/mob/living/l in range(src, round((power / 100) ** 0.25)))
 		var/rads = 500 * sqrt( 1 / (get_dist(l, src) + 1) )
@@ -689,8 +691,12 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		S.visible_message("<span class='danger'>The [S] explodes in a flash of green light on contact with the [src], resonating with a horrible sound...</span>",\
 			"<span class='danger'>The [S] is engulfed in green light on contact with the [src]. Appearing in its place is some kind of horrible rat-like creature!</span>")
 		playsound(src, 'sound/effects/supermatter.ogg', 150, TRUE)
+		var/mob/living/new_mob = new /mob/living/carbon/human/skaven(drop_location())
+		if(S.mind)
+			S.mind.transfer_to(new_mob)
+		else
+			new_mob.key = S.key
 		qdel(S)
-		new /mob/living/carbon/human/skaven(drop_location())
 		return
 
 	var/murder
@@ -842,12 +848,17 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 	else if(isliving(AM))
 		if(istype(AM, /mob/living/simple_animal/mouse))
+			var/mob/living/simple_animal/mouse/scrun = AM
 			AM.visible_message("<span class='danger'>The [AM] is engulfed in green light on contact with [src]. Appearing in its place is some kind of horrible rat-like creature!</span>",\
 				"<span class='userdanger'>You slam into the [src], and are consumed by green light. As your ears are filled with unearthly ringing, you feel your body begin to contort and change.</span>",\
 				"<span class='hear'>You hear an unearthly noise as a wave of heat washes over you.</span>")
 			playsound(src, 'sound/effects/supermatter.ogg', 150, TRUE)
+			var/mob/living/new_mob = new /mob/living/carbon/human/skaven(drop_location())
+			if(scrun.mind)
+				scrun.mind.transfer_to(new_mob)
+			else
+				new_mob.key = scrun.key
 			qdel(AM)
-			new /mob/living/carbon/human/skaven(drop_location())
 			return
 
 		else
@@ -939,6 +950,9 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 //////////////////////
 //Warpstone subtypes//
 //////////////////////
+
+/obj/machinery/power/supermatter_crystal/engine
+	anchored = TRUE
 
 /obj/machinery/power/supermatter_crystal/shard
 	name = "warpstone shard"

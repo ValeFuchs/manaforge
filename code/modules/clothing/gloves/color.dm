@@ -240,7 +240,7 @@
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 50)
 
 /obj/item/clothing/gloves/color/supermatter
-	desc = "Specialised gloves capable of handling warpstone."
+	desc = "Specialised gloves for handling small warpstone fragments cut off of larger crystals. The warning label says they do not protect the wearer from the dangers of touching large warpstone shards."
 	name = "wurtzite gloves"
 	icon_state = "green"
 	item_state = "greengloves"
