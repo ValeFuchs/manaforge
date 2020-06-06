@@ -126,6 +126,7 @@
 	name = "science suit storage unit"
 	suit_type    = /obj/item/clothing/suit/space/hardsuit/science
 	mask_type    = /obj/item/clothing/mask/gas
+	magboots_type = /obj/item/clothing/shoes/magboots
 	req_access = list(ACCESS_RESEARCH)
 
 /obj/machinery/suit_storage_unit/cmo/secure

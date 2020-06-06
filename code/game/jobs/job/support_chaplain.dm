@@ -64,9 +64,9 @@
 			if("imperium")
 				B.name = "Lectitio Divinitatus"
 			if("machine cult")
-				B.name = pick("Doctrina Mechanata", "Omnicopia", "Lexicanum Automata")
+				B.name = pick("Doctrina Mechanata", "Omnicopaeia", "Lexicanum Automata")
 			if("mechanicum")
-				B.name = pick("Doctrina Mechanata", "Omnicopia", "Lexicanum Automata")
+				B.name = pick("Doctrina Mechanata", "Omnicopaeia", "Lexicanum Automata")
 			if("toolboxia")
 				B.name = "Toolbox Manifesto Robusto"
 			if("science")

@@ -105,7 +105,7 @@
 	item_state = "disintegrate"
 	desc = "This hand of yours glows with an awesome power!"
 	flags = ABSTRACT | NODROP| DROPDEL
-	w_class = WEIGHT_CLASS_HUGE
+	w_class = WEIGHT_CLASS_TINY
 	hitsound = 'sound/weapons/sear.ogg'
 	damtype = BURN
 	attack_verb = list("punched", "cross countered", "pummeled")
@@ -115,7 +115,7 @@
 	icon_state = "godstaff-red"
 	item_state = "godstaff-red"
 	desc = "It has a mysterious, protective aura."
-	w_class = WEIGHT_CLASS_HUGE
+	w_class = WEIGHT_CLASS_TINY
 	force = 5
 	slot_flags = SLOT_BACK
 	block_chance = 50
@@ -171,6 +171,7 @@
 	desc = "Capable of cutting clean through a holy claymore."
 	icon_state = "katana"
 	item_state = "katana"
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_BELT | SLOT_BACK
 
 /obj/item/nullrod/claymore/multiverse
@@ -185,6 +186,7 @@
 	hitsound = 'sound/weapons/blade1.ogg'
 	icon_state = "swordblue"
 	item_state = "swordblue"
+	w_class = WEIGHT_CLASS_TINY
 	desc = "If you strike me down, I shall become more robust than you can possibly imagine."
 	slot_flags = SLOT_BELT
 
@@ -216,7 +218,7 @@
 	icon_state = "scythe0"
 	item_state = "scythe0"
 	desc = "Ask not for whom the bell tolls..."
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_TINY
 	armour_penetration = 35
 	slot_flags = SLOT_BACK
 	sharp = 1
@@ -287,7 +289,7 @@
 	item_state = "hammeron"
 	desc = "This war hammer cost the chaplain fourty thousand space dollars."
 	slot_flags = SLOT_BELT
-	w_class = WEIGHT_CLASS_HUGE
+	w_class = WEIGHT_CLASS_TINY
 	attack_verb = list("smashed", "bashed", "hammered", "crunched")
 
 /obj/item/nullrod/chainsaw
@@ -306,6 +308,7 @@
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "clownrender"
 	item_state = "gold_horn"
+	w_class = WEIGHT_CLASS_TINY
 	desc = "Used for absolutely hilarious sacrifices."
 	hitsound = 'sound/items/bikehorn.ogg'
 	sharp = 1
@@ -316,6 +319,7 @@
 	desc = "A whip, blessed with the power to banish evil shadowy creatures. What a terrible night to be in spess."
 	icon_state = "chain"
 	item_state = "chain"
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed")
 	hitsound = 'sound/weapons/slash.ogg'
@@ -378,7 +382,7 @@
 /obj/item/nullrod/claymore/bostaff //May as well make it a "claymore" and inherit the blocking
 	name = "monk's staff"
 	desc = "A long, tall staff made of polished wood. Traditionally used in ancient old-Earth martial arts, now used to harass the clown."
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_TINY
 	force = 13
 	block_chance = 40
 	slot_flags = SLOT_BACK
@@ -392,7 +396,7 @@
 	name = "arrhythmic knife"
 	icon_state = "crysknife"
 	item_state = "crysknife"
-	w_class = WEIGHT_CLASS_HUGE
+	w_class = WEIGHT_CLASS_TINY
 	desc = "They say fear is the true mind killer, but stabbing them in the head works too. Honour compels you to not sheathe it once drawn."
 	sharp = 1
 	slot_flags = null
@@ -425,6 +429,7 @@
 	name = "prayer beads"
 	icon_state = "rosary"
 	item_state = null
+	w_class = WEIGHT_CLASS_TINY
 	desc = "A set of prayer beads used by many of the more traditional religions in space.<br>Vampires and other unholy abominations have learned to fear these."
 	force = 0
 	throwforce = 0
@@ -497,6 +502,7 @@
 	name = "Holy Salt"
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "saltshakersmall"
+	w_class = WEIGHT_CLASS_TINY
 	desc = "While commonly used to repel some ghosts, it appears others are downright attracted to it."
 	force = 0
 	throwforce = 0
@@ -523,6 +529,7 @@
 	name = "prayer bread"
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "baguette"
+	w_class = WEIGHT_CLASS_TINY
 	desc = "a staple of worshipers of the Silentfather, this holy mime artifact has an odd effect on clowns."
 
 /obj/item/nullrod/rosary/bread/process()
@@ -546,7 +553,7 @@
 	reskin_selectable = FALSE
 	icon_state = "godstaff-red"
 	item_state = "godstaff-red"
-	w_class = WEIGHT_CLASS_HUGE
+	w_class = WEIGHT_CLASS_TINY
 	force = 5
 	slot_flags = SLOT_BACK
 	block_chance = 50

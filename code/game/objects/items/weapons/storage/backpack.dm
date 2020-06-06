@@ -147,6 +147,8 @@
 	desc = "It's a special backpack made exclusively for Nanotrasen officers."
 	icon_state = "captainpack"
 	item_state = "captainpack"
+	max_w_class = WEIGHT_CLASS_HUGE
+	max_combined_w_class = 35
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/industrial
@@ -291,6 +293,8 @@
 	name = "captain's satchel"
 	desc = "An exclusive satchel for Nanotrasen officers."
 	icon_state = "satchel-cap"
+	max_w_class = WEIGHT_CLASS_HUGE
+	max_combined_w_class = 35
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/satchel_blueshield
@@ -478,6 +482,8 @@
 	desc = "A duffelbag designed to hold large quantities of condoms."
 	icon_state = "duffel-captain"
 	item_state = "duffel-captain"
+	max_w_class = WEIGHT_CLASS_HUGE
+	max_combined_w_class = 35
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/duffel/security
