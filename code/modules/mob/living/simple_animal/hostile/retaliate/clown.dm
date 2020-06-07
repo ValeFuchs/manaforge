@@ -34,7 +34,7 @@
 	maxbodytemp = 370
 	unsuitable_atmos_damage = 10
 
-	var/banana_time = 1050 // If there's no time set it won't spawn.
+	var/banana_time = 10050 // If there's no time set it won't spawn.
 	var/banana_type = /obj/item/grown/bananapeel
 	var/attack_reagent
 
@@ -80,9 +80,11 @@
 	emote_see = list("bubbles", "oozes")
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/particle_effect/foam)
 
-// /mob/living/simple_animal/hostile/retaliate/clown/lube/Initialize()
-//	. = ..()
-//	AddElement(/datum/element/snailcrawl)
+/mob/living/simple_animal/hostile/retaliate/clown/lube/handle_automated_action()
+	if(istype(loc,/turf/simulated))
+		if(prob(50)) //Wets floors randomly
+			var/turf/simulated/T = loc
+			T.MakeSlippery()
 
 /mob/living/simple_animal/hostile/retaliate/clown/banana
 	name = "Clownana"
