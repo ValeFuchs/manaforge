@@ -1155,6 +1155,10 @@ GLOBAL_LIST_EMPTY(ghostteleportlocs)
 	name = "\improper Warpstone Engine"
 	icon_state = "engine"
 
+/area/engine/innersupermatter
+	name = "\improper Warpstone Core"
+	icon_state = "engine"
+
 //Solars
 
 /area/solar

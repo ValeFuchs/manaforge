@@ -24,7 +24,7 @@
 		GLOB.event_announcement.Announce("Abnormal activity detected in [station_name()]'s powernet. As a precautionary measure, the station's power will be shut off for an indeterminate duration.", "Critical Power Failure", new_sound = 'sound/AI/poweroff.ogg')
 
 	var/list/skipped_areas = list(/area/turret_protected/ai)
-	var/list/skipped_areas_apc = list(/area/engine/engineering)
+	var/list/skipped_areas_apc = list(/area/engine)
 
 	for(var/obj/machinery/power/smes/S in GLOB.machines)
 		var/area/current_area = get_area(S)
@@ -48,7 +48,7 @@
 
 /proc/power_restore(var/announce = 1)
 	var/list/skipped_areas = list(/area/turret_protected/ai)
-	var/list/skipped_areas_apc = list(/area/engine/engineering)
+	var/list/skipped_areas_apc = list(/area/engine)
 
 	if(announce)
 		GLOB.event_announcement.Announce("Power has been restored to [station_name()]. We apologize for the inconvenience.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')

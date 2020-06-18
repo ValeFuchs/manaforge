@@ -1,6 +1,6 @@
 /obj/structure/statue
 	name = "statue"
-	desc = "Placeholder. Yell at Firecage if you SOMEHOW see this."
+	desc = "Placeholder. Yell at Valence if you SOMEHOW see this."
 	icon = 'icons/obj/statue.dmi'
 	icon_state = ""
 	density = 1
@@ -215,6 +215,11 @@
 /obj/structure/statue/diamond/captain
 	name = "statue of THE captain"
 	icon_state = "cap"
+
+/obj/structure/statue/diamond/johnhconway
+	name = "statue of John Horton Conway"
+	icon_state = "jhc"
+	desc = "That is one handsome mathematician."
 
 /obj/structure/statue/diamond/ai1
 	name = "statue of the AI hologram"

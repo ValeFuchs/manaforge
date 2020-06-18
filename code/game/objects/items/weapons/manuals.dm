@@ -69,27 +69,27 @@
 
 
 /obj/item/book/manual/supermatter_engine
-	name = "Supermatter Engine User's Guide"
-	icon_state = "bookParticleAccelerator"   //TEMP FIXME
-	author = "Waleed Asad"
-	title = "Supermatter Engine User's Guide"
+	name = "Warpstone Engine Guide"
+	icon_state = "book7"
+	author = "Trecnan Cravenfang"
+	title = "Warpstone Engine Guide"
 
-	dat = {"Engineering notes on single-stage Supermatter engine,</br>
-			-Waleed Asad</br>
+	dat = {"Notes on research and warpstone based power-energy production,</br>
+			-Trecnan Cravenfang</br>
 
-			A word of caution, do not enter the engine room, for any reason, without radiation protection and mesons on. The status of the engine may be unpredictable even when you believe it is .off.. This is an important level of personal protection.</br></br>
+			A word of caution: Do not enter any warpstone room, for any reason, without radiation protection and mesons on. Warpstone is unpredictable, even when you believe it is .off.. This is an important level of personal protection.</br></br>
 
-			The engine has two basic modes of functionality. He has observed that it is capable of both a safe level of operation and a modified, high output mode.</br></br>
+			The engine has two basic modes of functionality. I have observed that it is capable of both a safe level of operation and a modified, high output mode.</br></br>
 
 			<center><b>Notes on starting the basic function mode, dubbed .Heat-Primary Mode..</b></center></br></br>
 
 			1. Prepare collector arrays. This is done standard to any text on their function by wrenching them down, filling six plasma tanks with a plasma canister, and inserting the tank into the collectors one by one. Finally, initialize each collector.</br></br>
 
-			2. Prepare gas system. Before introducing any gas to the Supermatter engine room, it is important to remember the small but vital steps to preparing this section. First, set the input gas pump and output gas flow pump to 4500, or maximum flow. Second, switch the digital switching valve into the .up. position, in order to circulate the gas back toward the coolers and collectors.</br></br>
+			2. Prepare gas system. Before introducing any gas to the warpstone engine room, it is important to remember the small but vital steps to preparing this section. First, set the input gas pump and output gas flow pump to 4500, or maximum flow. Second, switch the digital switching valve into the .up. position, in order to circulate the gas back toward the coolers and collectors.</br></br>
 
 			3. Apply N2 gas. Retrieve the two N2 canisters from storage and bring them to the engine room. Attach one of them to the input section of the engine gas system located next to the collectors. Keep it attached until the N2 pressure is low enough to turn the canister light red. Replace it with the second canister to keep N2 pressure at optimal levels.</br></br>
 
-			4. Begin primary emitter burst series. This means firing a single emitter for its first four shots. It is important to move to this step quickly. The onboard SMES units may not have enough power to run the emitters if left alone too long on-station. This engine can produce enough power on its own to run the entire station, ignoring the SMES units completely, and is wired to do so.</br></br>
+			4. Begin primary emitter burst series. This means firing a single emitter for its first four shots. It is important to move to this step quickly. The onboard SMES units may not have enough power to run the emitters if left alone too long on-station. This engine can produce enough power on its own to run the entire station, ignoring the SMES units completely, and can be wired to do so.</br></br>
 
 			5. Switch SMES units to primary settings. Maximize input and set the devices to automatically charge, additionally turn their outputs on if they are off unless power is to be saved (Which can be useful in case of later failures.)</br></br>
 
@@ -99,7 +99,7 @@
 
 
 
-			<center>The second mode for running the engine uses a gas mix to produce a reaction within the Supermatter. This mode requires CE or Atmospheric help to setup. <b>This has been dubbed the .O2-Reaction Mode..</b></center></br></br>
+			<center>The second mode for running the engine uses a gas mix to produce a warpstone reaction. I recommend you consult your CE before using this setup. <b>This has been dubbed the .O2-Reaction Mode..</b></center></br></br>
 
 			<b><u>THIS MODE CAN CAUSE A RUNAWAY REACTION, LEADING TO CATASTROPHIC FAILURE IF NOT MAINTAINED. NEVER FORGET ABOUT THE ENGINE IN THIS MODE.</u></b></br></br>
 
@@ -107,49 +107,49 @@
 
 			1. Prepare collector arrays. This is done standard to any text on their function by wrenching them down, filling six plasma tanks with a plasma canister, and inserting the tank into the collectors one by one. Finally, initialize each collector.</br></br>
 
-			2. Prepare gas system. Before introducing any gas to the Supermatter engine room, it is important to remember the small but vital steps to preparing this section. First, set the input gas pump and output gas flow pump to 4500, or maximum flow. Second, switch the digital switching valve into the .up. position, in order to circulate the gas back toward the coolers and collectors.</br></br>
+			2. Prepare gas system. Before introducing any gas to the warpstone engine room, it is important to remember the small but vital steps to preparing this section. First, set the input gas pump and output gas flow pump to 4500, or maximum flow. Second, switch the digital switching valve into the .up. position, in order to circulate the gas back toward the coolers and collectors.</br></br>
 
 			3. Modify the engine room filters. Unlike the Heat-Primary Mode, it is important to change the filters attached to the gas system to stop filtering O2, and start filtering Carbon Molecules. O2-Reaction Mode produces far more plasma than Heat-Primary, therefor filtering it off is essential.</br></br>
 
-			4. Switch SMES units to primary settings. Maximize input and set the devices to automatically charge, additionally turn their outputs on if they are off unless power is to be saved (Which can be useful in case of later failures.) If you check the power in the system lines at this point you will find that it is constantly going up. Indeed, with just the addition of O2 to the Supermatter, it will begin outputting power.</br></br>
+			4. Switch SMES units to primary settings. Maximize input and set the devices to automatically charge, additionally turn their outputs on if they are off unless power is to be saved (Which can be useful in case of later failures.) If you check the power in the system lines at this point you will find that it is constantly going up. Indeed, with just the addition of O2 to the warpstone, it will begin outputting power.</br></br>
 
-			5. Begin primary emitter burst series. Fire a single emitter for a series of four pulses, or a single series, and turn it off. Do not over power the Supermatter. The reaction is self sustaining and propagating. As long as O2 is in the chamber, it will continue outputting MORE power.</br></br>
+			5. Begin primary emitter burst series. Fire a single emitter for a series of four pulses, or a single series, and turn it off. Do not over power the warpstone. The reaction is self sustaining and propagating. As long as O2 is in the chamber, it will continue outputting MORE power.</br></br>
 
 			6. Maintain follow up operations. Remember to check the temp of the core gas and switch to the Heat-Primary function, or vent the core room when problems begin if required.</br></br>
 
-			Notes on Supermatter Reaction Function and Drawbacks-</br></br>
+			Notes on Warpstone Reaction Function and Drawbacks-</br></br>
 
-			After several hours of observation an interesting phenomenon was witnessed. The Supermatter undergoes a constant self-sustaining reaction when given an extremely high O2 concentration. Anything about 80% or higher typically will cause this reaction. The Supermatter will continue to react whenever this gas mix is in the same room as the Supermatter.</br></br>
+			After several hours of observation an interesting phenomenon was seen-witnessed. The warpstone undergoes a constant self-sustaining reaction when given an extremely high O2 concentration. Anything about 80% or higher typically will cause this reaction. The warpstone will continue to react whenever this gas mix is in the same room as the warpstone.</br></br>
 
-			To understand why O2-Reaction mode is dangerous, the core principle of the Supermatter must be understood. The Supermatter emits three things when .not safe,. that is any time it is giving off power. These things are:</br></br>
+			To understand why O2-Reaction mode is dangerous, the core principle of warpstone must be understood. Warpstone emits three things when .not safe,. that is any time it is giving off power. These things are:</br></br>
 
 			*Radiation (which is converted into power by the collectors,)</br>
 			*Heat (which is removed via the gas exchange system and coolers,)</br>
 			*External gas (in the form of plasma and O2.)</br>
 
-			When in Heat-Primary mode, far more heat and plasma are produced than radiation. In O2-Reaction mode, very little heat and only moderate amounts of plasma are produced, however HUGE amounts of energy leaving the Supermatter is in the form of radiation.</br></br>
+			When in Heat-Primary mode, far more heat and plasma are produced than radiation. In O2-Reaction mode, very little heat and only moderate amounts of plasma are produced, however HUGE amounts of energy leaving the warpstone is in the form of radiation.</br></br>
 
-			The O2-Reaction engine mode has a single drawback which has been eluded to more than once so far and that is very simple. The engine room will continue to grow hotter as the constant reaction continues. Eventually, there will be what he calls the .critical gas mix.. This is the point at which the constant adding of plasma to the mix of air around the Supermatter changes the gas concentration to below the tolerance. When this happens, two things occur. First, the Supermatter switches to its primary mode of operation where in huge amounts of heat are produced by the engine rather than low amounts with high power output. Second, an uncontrollable increase in heat within the Supermatter chamber will occur. This will lead to a spark-up, igniting the plasma in the Supermatter chamber, wildly increasing both pressure and temperature.</br></br>
+			The O2-Reaction engine mode has a single drawback which has been eluded to more than once so far and that is very simple. The engine room will continue to grow hotter as the constant reaction continues. Eventually, there will be what call the .critical gas mix.. This is the point at which the constant adding of plasma to the mix of air around the warpstone changes the gas concentration to below tolerance. When this happens, two things occur. First, the warpstone switches to its primary mode of operation where in huge amounts of heat are produced by the engine rather than low amounts with high power output. Second, an uncontrollable increase in heat within the warpstone chamber will occur. This will lead to a spark-up, igniting the plasma in the warpstone chamber, wildly increasing both pressure and temperature.</br></br>
 
 			While the O2-Reaction mode is dangerous, it does produce heavy amounts of energy. Consider using this mode only in short amounts to fill the SMES, and switch back later in the shift to keep things flowing normally.</br></br>
 
 
-			Notes on Supermatter Containment and Emergency Procedures-</br></br>
+			Notes on Warpstone Containment and Emergency Procedures-</br></br>
 
-			While a constant vigil on the Supermatter is not required, regular checkups are important. Verify the temp of gas leaving the Supermatter chamber for unsafe levels, and ensure that the plasma in the chamber is at a safe concentration. Of course, also make sure the chamber is not on fire. A fire in the core chamber is very difficult to put out. As any Toxin scientist can tell you, even low amounts of plasma can burn at very high temperatures. This burning creates a huge increase in pressure and more importantly, temperature of the crystal itself.</br></br>
+			While a constant vigil on warpstone is not required, regular checkups are important. Verify the temp of gas leaving the warpstone chamber for unsafe levels, and ensure that the plasma in the chamber is at a safe concentration. Of course, also make sure the chamber is not on fire. A fire in the core chamber is very difficult to put out. As any Toxin scientist can tell you, even low amounts of plasma can burn at very high temperatures. This burning creates a huge increase in pressure and more importantly, temperature of the warpstone itself.</br></br>
 
-			The Supermatter is strong, but not invincible. When the Supermatter is heated too much, its crystal structure will attempt to liquify. The change in atomic structure of the Supermatter leads to a single reaction, a massive explosion. The computer chip attached to the Supermatter core will warn the station when stability is threatened. It will then offer a second warning, when things have become dangerously close to total destruction of the core.</br></br>
+			Warpstone is strong, but inherently unstable. When warpstone is heated too much, its crystal structure will attempt to liquify. The change in atomic structure of the warpstone generally leads to a single, a massive explosion. The computer chip attached to the warpstone core will warn the station when stability is threatened. It will then offer a second warning, when things have become dangerously close to total destruction of the core.</br></br>
 
-			Located both within the warpstone monitoring room and engine room is the vent control button. This button allows the Core Vent Controls to be accessed, venting the room to space. Remember however, that this process takes time. If a fire is raging, and the pressure is higher than fathomable, it will take a great deal of time to vent the room. Also located in the supermatter monitoring room is the emergency core eject button. A new core can be ordered from cargo. It is often not worth the lives of the crew to hold on to it, not to mention the structural damage. However, if by some mistake the Supermatter is pushed off or removed from the mass ejector it sits on, manual reposition will be required. Which is very dangerous and often leads to death.</br></br>
+			Located within the warpstone engine room is the vent control button. This button allows the Core Vent Controls to be accessed, venting the room to space. Remember however, that this process takes time. If a fire is raging, and the pressure is higher than fathomable, it will take a great deal of time to vent the room. The warpstone engine is also directly connected to Atmospherics by a dedicated pipeline. In the event of an emergency, it is recommended to first vent the core and then flood it with N2 gas pumped directly from Atmospherics.</br></br>
 
-			The Supermatter is extremely dangerous. More dangerous than people give it credit for. It can destroy you in an instant, without hesitation, reducing you to a pile of dust. When working closely with Supermatter it is.. suggested to get a genetic backup and do not wear any items of value to you. The Supermatter core can be pulled if grabbed properly by the base, but <b>pushing is not possible.</b></br></br></br>
+			Warpstone is extremely dangerous. More dangerous than people give it credit for. It can destroy you in an instant, without hesitation, reducing you to a pile of dust. Even exposure from a distance without proper protection can cause severe mental and bodily harm. When working closely with warpstone it is.. suggested to get a genetic backup and do not wear any items of value to you. The Warpstone core can be pulled if grabbed properly by the base, but <b>pushing is not possible.</b></br></br></br>
 
 
 			In Closing-</br></br>
 
-			Remember that the Supermatter is dangerous, and the core is dangerous still. Venting the core room is always an option if you are even remotely worried, utilizing Atmospherics to properly ready the room once more for core function. It is always a good idea to check up regularly on the temperature of gas leaving the chamber, as well as the power in the system lines. Lastly, once again remember, never touch the Supermatter with anything. Ever.</br></br>
+			Remember that warpstone is dangerous, and the core is dangerous still. Venting the core room is always an option if you are even remotely worried, utilizing Atmospherics to properly ready the room once more for core function. It is always a good idea to check up regularly on the temperature of gas leaving the chamber, as well as the power in the system lines. Lastly, once again remember, never touch the warpstone with anything. Ever.</br></br>
 
-			-Waleed Asad, Senior Engine Technician."}
+			-Trecnan Cravenfang, Senior Warpstone Engineer."}
 
 /obj/item/book/manual/engineering_hacking
 	name = "Hacking"
@@ -589,6 +589,72 @@
 				</html>
 			"}
 
+
+/obj/item/book/manual/warpstone_science
+	name = "Warpstone Research Guide"
+	icon_state ="bookforcewall"
+	author = "Trecnan Cravenfang"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
+	title = "Warpstone Research Guide"
+//big pile of shit below.
+
+	dat = {"<html>
+				<head>
+				<style>
+				h1 {font-size: 18px; margin: 15px 0px 5px;}
+				h2 {font-size: 15px; margin: 15px 0px 5px;}
+				li {margin: 2px 0px 2px 15px;}
+				ul {list-style: none; margin: 5px; padding: 0px;}
+				ol {margin: 5px; padding: 0px 15px;}
+				</style>
+				</head>
+				<body>
+				<h3>Warpstone Research</h3>
+
+				<h4>Your Equipment</h4>
+				The warpstone research lab contains specialized equipment capable of touching warpstone without immediately turning to dust. Do not touch, observe, or even think about warpstone without this equipment!
+
+				<h4>Preparation and Safety</h4>
+
+				Before working with warpstone, it is important to take necessary safety precautions. Warpstone is extremely dangerous and can kill you instantly if handled without proper equipment!
+				<p>
+				<b>Step one:</b> Put on meson goggles. <b><font color='red'>NEVER LOOK AT WARPSTONE WITHOUT MESONS ON!</font></b><br>
+				<b>Step two:</b> Put on a science hardsuit. <b>DO NOT ENTER THE WARPSTONE CHAMBER WITHOUT WEARING ONE!</b><br>
+				<b>Step three:</b> Put on a mask and grab an oxygen tank. The Warpstone chamber only contains pure, super chilled N2 gas.<br>
+				<b>Step four:</b> Put on a pair of wurzite gloves. <b><font color='red'>WARPSTONE CRYSTALS CAN ONLY BE SAFELY HANDLED WITH THESE GLOVES!</font></b><br>
+				</p>
+
+				<h4>Handling Warpstone</h4>
+
+				The warpstone research chamber contains a small warpstone shard that our scientists have successfully stabilized inside a special containment field. While the shard is still extremely dangerous to you, organic life, and anything not made out of wurzite, it is incapable of delaminating or destroying the station.
+				<p>
+				<b>Step One:</b> Ensure you are wearing all proper safety equipment. I cannot stress enough just how dangerous it is to try touching or handling warpstone without safety gear. <b>Warpstone can kill you instantly if touched with a bare hand!</b><br>
+				<b>Step Two:</b> Grab a wurtzite lancet. It is the only tool on the station capable of cutting small warpstone shards from the larger crystal.<br>
+				<b>Step Three:</b> Using the lancet, carefully cut a small portion of warpstone from the crystal. Warpstone tends to react violently to being cut, but you will be safe so long as the cooling system is active and you are wearing your mesons, gloves, and hardsuit.<br>
+				<b>Step Four:</b> Pick up the freshly cut warpstone shard. Don't ever try to pick one up without wearing wurzite gloves.<br>
+				<b>Step Six:</b> Congratulations! You are now holding a shard of warpstone for use in scientific research.<br>
+				</p>
+
+				<h4>Warpstone Research</h4>
+
+				Nanotrasen believes warpstone has limitless potential, just like plasma. I'm skeptical, but so far I have identified two promising fields of research with warpstone: Power production and Chemistry
+				<p>
+				<b>Chemistry</b> <br>
+				It's no secret warpstone really does not like organic bodies. We've been able to figure out a way to harness this property however, enabling us to chemically morph organic bodies at will. I have decided to call the new chemicals capable of doing so "Morphogenic Compound"<br><br>
+				To create Morphogenic Compound, grind a warpstone shard using a chemical blender and then combine the resultant warpstone dust with carbon and water in a one to one ratio. <br><br>
+				<b>Note:</b> Morphogenic Compound is useless on its own and must be combined with a catalyst to trigger body transformations.<br>
+				<b>Note 2:</b> Never combine ammonia with warpstone dust, or plasma dust with warpstone dust!<br>
+				I have yet to figure out what chemicals, when combined with Morphogenic Compound, will trigger a transformative reaction and which ones do not. I have however noticed Morphogenic Compound seems to work with blood, copying the donor's genes and transfering them to whichever recipient is injected with the resultant combination. <br><br>
+
+				<b>Power Research</b> <br>
+				Warpstone is inherently unstable, and reacts unpredicatbly to anything within its environment. This, naturally, includes gasses. You will find that the warpstone research lab is fully equipped to test how different gasses, gas combinations, and concentrations affect warpstone reactivity and power output. <br>
+				The lab also includes a special terminal capable of monitoring the research crystal and how it reacts to various gasses and other stimulation in impressive detail. <br>
+				</p>
+
+				<h4><b><font color='red'>Notice from Nanotrasen</font></b></h4>
+				<font color='red'>Warpstone and Morphogenic Compound experiments on crew members is <b>strictly prohibited!</b> Warpstone experiments may only be performed on the non-sentient test monkeys you have been supplied with!</font>
+				</body>
+				</html>
+				"}
 
 /obj/item/book/manual/robotics_cyborgs
 	name = "Cyborgs for Dummies"
@@ -1256,7 +1322,11 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="https://www.paradisestation.org/wiki/index.php?title=Standard_Operating_Procedure_(Science)&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>		</body>
+		<iframe width='100%' height='97%' src="https://www.paradisestation.org/wiki/index.php?title=Standard_Operating_Procedure_(Science)&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+
+		<h4><b><font color='red'>Notice from Nanotrasen</font></b></h4>
+		<font color='red'>Warpstone and Morphogenic Compound experiments on crew members is <b>strictly prohibited!</b> Warpstone experiments may only be performed on the non-sentient test monkeys you have been supplied with!</font>
+		</body>
 
 		</html>
 
