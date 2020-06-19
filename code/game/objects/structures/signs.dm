@@ -85,6 +85,11 @@
 	desc = "A warning sign which reads 'SECURE AREA'"
 	icon_state = "securearea"
 
+/obj/structure/sign/nitro
+	name = "\improper N2 ENVIRONMENT"
+	desc = "A warning sign alerting the reader that this room has an atmosphere of pure N2 gas"
+	icon_state = "nitrowarn"
+
 /obj/structure/sign/biohazard
 	name = "\improper BIOHAZARD"
 	desc = "A warning sign which reads 'BIOHAZARD'"
