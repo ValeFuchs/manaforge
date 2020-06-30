@@ -142,6 +142,13 @@
 	item_state = "headset"
 	ks2type = /obj/item/encryptionkey/headset_rob
 
+/obj/item/radio/headset/headset_arch
+	name = "archaeology radio headset"
+	desc = "Of all types of scientist, archaeologists are the closest friends of the common miner."
+	icon_state = "sci_headset"
+	item_state = "headset"
+	ks2type = /obj/item/encryptionkey/headset_arch
+
 /obj/item/radio/headset/headset_med
 	name = "medical radio headset"
 	desc = "A headset for the trained staff of the medbay."

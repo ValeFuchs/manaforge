@@ -638,7 +638,7 @@
 		faith -= 75
 		to_chat(missionary, "<span class='warning'>Your faith is strong, but [target.p_their()] mind remains closed to your ideals. Your resolve helps you retain a bit of faith though.</span>")
 		return
-	else if(target.mind.assigned_role == "Psychiatrist" || target.mind.assigned_role == "Librarian")		//fancy book lernin helps counter religion (day 0 job love, what madness!)
+	else if(target.mind.assigned_role == "Psychiatrist" || target.mind.assigned_role == "Archaeologist")		//fancy book lernin helps counter religion (day 0 job love, what madness!)
 		if(prob(35))	//35% chance to fail
 			to_chat(missionary, "<span class='warning'>This one is well trained in matters of the mind... They will not be swayed as easily as you thought...</span>")
 			faith -=50		//lose half your faith to the book-readers

@@ -4,7 +4,7 @@
 //
 //*******************************
 
-// Deprecated! See global.dm for new SQL config vars -- TLE
+// Deprecated! Librarian is no longer a job in the game!
 /*
 #define SQL_ADDRESS ""
 #define SQL_DB ""

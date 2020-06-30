@@ -170,13 +170,13 @@ GLOBAL_DATUM_INIT(multispin_words, /regex, regex("like a record baby"))
 	if(owner.mind)
 		//Holy characters are very good at speaking with the voice of god
 		if(owner.mind.isholy)
-			power_multiplier *= 2
+			power_multiplier *= 3
 		//Command staff has authority
 		if(owner.mind.assigned_role in GLOB.command_positions)
 			power_multiplier *= 1.4
 		//Why are you speaking
 		if(owner.mind.assigned_role == "Mime")
-			power_multiplier *= 0.5
+			power_multiplier *= 0.2
 
 	//Cultists are closer to their gods and are more powerful, but they'll give themselves away
 	if(iscultist(owner))
@@ -239,7 +239,7 @@ GLOBAL_DATUM_INIT(multispin_words, /regex, regex("like a record baby"))
 	//SILENCE
 	else if((findtext(message, GLOB.silence_words)))
 		for(var/mob/living/carbon/C in listeners)
-			if(owner.mind && (owner.mind.assigned_role == "Librarian" || owner.mind.assigned_role == "Mime"))
+			if(owner.mind && (owner.mind.assigned_role == "Mime"))
 				power_multiplier *= 3
 			C.silent += (10 * power_multiplier)
 		next_command = world.time + cooldown_stun

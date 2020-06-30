@@ -384,14 +384,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	job = list("Roboticist")
 	surplus = 0
 
-//Librarian
+/*//Librarian
 /datum/uplink_item/jobspecific/etwenty
 	name = "The E20"
 	desc = "A seemingly innocent die, those who are not afraid to roll for attack will find it's effects quite explosive. Has a four second timer."
 	reference = "ETW"
 	item = /obj/item/dice/d20/e20
 	cost = 3
-	job = list("Librarian")
+	job = list("Librarian") */
 
 //Botanist
 /datum/uplink_item/jobspecific/ambrosiacruciatus
@@ -448,7 +448,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/pen/poison
 	cost = 2
 	excludefrom = list(/datum/game_mode/nuclear)
-	job = list("Head of Personnel", "Quartermaster", "Cargo Technician", "Librarian")
+	job = list("Head of Personnel", "Quartermaster", "Cargo Technician", "Archaeologist")
 
 
 // DANGEROUS WEAPONS

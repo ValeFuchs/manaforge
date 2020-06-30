@@ -374,7 +374,7 @@
 
 				// Chef
 				/obj/item/storage/box/chef_rare_ingredients_kit = 100
-				// It would be nice to also have items for other service jobs: Mime, Librarian, Chaplain, etc
+				// It would be nice to also have items for other service jobs: Mime, Chaplain, etc
 				)
 
 

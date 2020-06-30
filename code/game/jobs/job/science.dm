@@ -9,11 +9,11 @@
 	department_head = list("Captain")
 	selection_color = "#ffddff"
 	req_admin_notify = 1
-	access = list(ACCESS_RD, ACCESS_HEADS, ACCESS_TOX, ACCESS_GENETICS, ACCESS_MORGUE,
+	access = list(ACCESS_RD, ACCESS_ARCHAEOLOGY, ACCESS_HEADS, ACCESS_TOX, ACCESS_GENETICS, ACCESS_MORGUE,
 					ACCESS_TOX_STORAGE, ACCESS_TECH_STORAGE, ACCESS_TELEPORTER, ACCESS_SEC_DOORS,
 					ACCESS_RESEARCH, ACCESS_ROBOTICS, ACCESS_XENOBIOLOGY, ACCESS_AI_UPLOAD,
 					ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_TCOMSAT, ACCESS_GATEWAY, ACCESS_XENOARCH, ACCESS_MINISAT, ACCESS_MINERAL_STOREROOM, ACCESS_NETWORK)
-	minimal_access = list(ACCESS_EVA, ACCESS_RD, ACCESS_HEADS, ACCESS_TOX, ACCESS_GENETICS, ACCESS_MORGUE,
+	minimal_access = list(ACCESS_EVA, ACCESS_ARCHAEOLOGY, ACCESS_RD, ACCESS_HEADS, ACCESS_TOX, ACCESS_GENETICS, ACCESS_MORGUE,
 					ACCESS_TOX_STORAGE, ACCESS_TECH_STORAGE, ACCESS_TELEPORTER, ACCESS_SEC_DOORS,
 					ACCESS_RESEARCH, ACCESS_ROBOTICS, ACCESS_XENOBIOLOGY, ACCESS_AI_UPLOAD,
 					ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_TCOMSAT, ACCESS_GATEWAY, ACCESS_XENOARCH, ACCESS_MINISAT, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM, ACCESS_NETWORK)
@@ -59,7 +59,7 @@
 	selection_color = "#ffeeff"
 	access = list(ACCESS_ROBOTICS, ACCESS_TOX, ACCESS_TOX_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY, ACCESS_XENOARCH, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_TOX, ACCESS_TOX_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY, ACCESS_XENOARCH, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
-	alt_titles = list("Xenoarcheologist", "Anomalist", "Plasma Researcher", "Xenobiologist", "Warpstone Researcher")
+	alt_titles = list("Anomalist", "Plasma Researcher", "Xenobiologist", "Warpstone Researcher")
 	minimal_player_age = 3
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
@@ -121,3 +121,36 @@
 	l_ear = /obj/item/radio/headset/headset_sci
 	id = /obj/item/card/id/research
 	pda = /obj/item/pda/roboticist
+
+/datum/job/archaeologist
+	title = "Archaeologist"
+	flag = JOB_ARCHAEOLOGIST
+	department_flag = JOBCAT_MEDSCI
+	total_positions = 3
+	spawn_positions = 3
+	is_science = 1
+	supervisors = "the research director"
+	department_head = list("Research Director")
+	selection_color = "#ffeeff"
+	access = list(ACCESS_EVA, ACCESS_ARCHAEOLOGY, ACCESS_RESEARCH, ACCESS_XENOARCH, ACCESS_MINERAL_STOREROOM, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_MINT, ACCESS_MINING, ACCESS_MINING_STATION)
+	minimal_access = list(ACCESS_EVA, ACCESS_ARCHAEOLOGY, ACCESS_RESEARCH, ACCESS_XENOARCH, ACCESS_MINERAL_STOREROOM, ACCESS_MINING, ACCESS_MINT, ACCESS_MINING_STATION, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING)
+	alt_titles = list("Xenoarcheologist", "Explorer")
+	outfit = /datum/outfit/job/archaeologist
+
+	required_objectives = list(
+		/datum/job_objective/archaeology
+	)
+
+/datum/outfit/job/archaeologist
+	name = "Archaeologist"
+	jobtype = /datum/job/archaeologist
+
+	uniform = /obj/item/clothing/under/rank/archaeologist
+	suit = /obj/item/clothing/suit/storage/labcoat
+	head = /obj/item/clothing/head/cowboyhat/tan
+	belt = /obj/item/storage/belt/archaeology/full
+	gloves = /obj/item/clothing/gloves/color/black
+	shoes = /obj/item/clothing/shoes/workboots/mining
+	l_ear = /obj/item/radio/headset/headset_arch
+	id = /obj/item/card/id/research
+	pda = /obj/item/pda/archaeologist

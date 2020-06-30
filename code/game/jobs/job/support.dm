@@ -394,7 +394,8 @@
 	pda = /obj/item/pda/janitor
 
 
-//More or less assistants
+/* //Librarian shall DIE DIE - Vale
+
 /datum/job/librarian
 	title = "Librarian"
 	flag = JOB_LIBRARIAN
@@ -422,7 +423,7 @@
 	l_hand = /obj/item/storage/bag/books
 	pda = /obj/item/pda/librarian
 	backpack_contents = list(
-		/obj/item/videocam = 1)
+		/obj/item/videocam = 1) */
 
 /datum/job/barber
 	title = "Barber"

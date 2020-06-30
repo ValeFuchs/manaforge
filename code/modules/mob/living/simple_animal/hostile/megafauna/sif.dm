@@ -37,6 +37,9 @@ WHEN SIF IS ENRAGED (Stage 3):
 	- Sif's specials take 60% less time to recharge from (Angered = 50) to (Enraged = 30)
 	- Sif is way slower but does more damage, as well as chances to dodge projectiles and melee attacks more often.
 
+	if(A == src) // If we're clicking ourself we should not attack ourself.
+		possessed_item.attack_self(src)
+
 When Sif dies, it leaves behind a:
 	!! Sword Of The Forsaken !! -> Giant ass sword that does damage. Small chance of blocking hits and almost no chance to block projectiles.
 	!! Necklace Of The Forsaken !! -> Works by instantly reviving or fully healing the user at their discretion (one time use and can be used when dead, knocked out or alive)

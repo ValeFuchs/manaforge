@@ -71,8 +71,10 @@ GLOBAL_DATUM_INIT(nttc_config, /datum/nttc_configuration, new())
 		"Research Director" = "sciradio",
 		"Roboticist" = "sciradio",
 		"Scientist" = "sciradio",
-		"Xenoarcheologist" = "sciradio",
 		"Xenobiologist" = "sciradio",
+		"Archaeologist" = "sciradio",
+		"Explorer" = "sciradio",
+		"Xenoarcheologist" = "sciradio",
 		// Security
 		"Brig Physician" = "secradio",
 		"Detective" = "secradio",
@@ -106,7 +108,6 @@ GLOBAL_DATUM_INIT(nttc_config, /datum/nttc_configuration, new())
 		"Hydroponicist" = "srvradio",
 		"Janitor" = "srvradio",
 		"Journalist" = "srvradio",
-		"Librarian" = "srvradio",
 		"Mime" = "srvradio",
 	)
 	// Just command members

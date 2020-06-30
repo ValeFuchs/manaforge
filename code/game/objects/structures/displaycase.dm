@@ -105,6 +105,8 @@
 			toggle_lock(user)
 		else
 			to_chat(user,  "<span class='warning'>Access denied.</span>")
+	else if((istype(I, /obj/item/archaeology/finished/massiveskull)) || (istype(I, /obj/item/archaeology/finished/advmech)))
+		to_chat(user, "<span class='warning'>[I] is too large to fit inside this display case!</span>")
 	else if(open && !showpiece)
 		if(user.drop_item())
 			I.forceMove(src)

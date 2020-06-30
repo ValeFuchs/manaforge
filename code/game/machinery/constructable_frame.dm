@@ -731,6 +731,17 @@ to destroy them and players will be able to make replacements.
 							/obj/item/stock_parts/micro_laser = 1,
 							/obj/item/stack/sheet/glass = 1)
 
+/obj/item/circuitboard/archan
+	name = "Circuit board (Artifact Restorer)"
+	build_path = /obj/machinery/archaeology_scanner
+	board_type = "machine"
+	origin_tech = "programming=2;engineering=2"
+	frame_desc = "Requires 1 Manipulator, 1 Micro-Laser and 1 Console Screen."
+	req_components = list(
+							/obj/item/stock_parts/manipulator = 1,
+							/obj/item/stock_parts/micro_laser = 1,
+							/obj/item/stack/sheet/glass = 1)
+
 /obj/item/circuitboard/podfab
 	name = "Circuit board (Spacepod Fabricator)"
 	build_path = /obj/machinery/mecha_part_fabricator/spacepod

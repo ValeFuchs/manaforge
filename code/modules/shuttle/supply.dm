@@ -96,6 +96,7 @@
 
 	var/plasma_count = 0
 	var/intel_count = 0
+	var/artifact_count = 0
 	var/crate_count = 0
 
 	var/msg = ""
@@ -161,6 +162,17 @@
 					var/obj/item/stack/sheet/mineral/plasma/P = thing
 					plasma_count += P.amount
 
+				// Sell artifacts
+				if(istype(thing, /obj/item/archaeology/finished))
+					++artifact_count
+					SSshuttle.sentArtifact = TRUE
+					var/obj/item/archaeology/finished/T = thing
+					for(var/mob/M in GLOB.player_list)
+						if(M.mind)
+							for(var/datum/job_objective/archaeology/objective in M.mind.job_objectives)
+								objective.unit_completed(1)
+					msg += "<span class='good'>Archaeological Artifact</span>: [T] - Logged for preservation.<br>"
+
 				// Sell syndicate intel
 				if(istype(thing, /obj/item/documents/syndicate))
 					++intel_count
@@ -216,6 +228,11 @@
 	if(plasma_count > 0)
 		pointsEarned = round(plasma_count * SSshuttle.points_per_plasma)
 		msg += "<span class='good'>+[pointsEarned]</span>: Received [plasma_count] unit(s) of exotic material.<br>"
+		SSshuttle.points += pointsEarned
+
+	if(artifact_count > 0)
+		pointsEarned = round(artifact_count * SSshuttle.points_per_artifact)
+		msg += "<span class='good'>+[pointsEarned]</span>: Received [artifact_count] unit(s) of archaeological artifact.<br>"
 		SSshuttle.points += pointsEarned
 
 	if(intel_count > 0)

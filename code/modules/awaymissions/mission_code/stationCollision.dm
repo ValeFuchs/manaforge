@@ -21,7 +21,7 @@
  //Gateroom gets its own APC specifically for the gate
 /area/awaymission/gateroom
 
- //Library, medbay, storage room
+ //Museum, medbay, storage room
 /area/awaymission/southblock
 
  //Arrivals, security, hydroponics, shuttles (since they dont move, they dont need specific areas)

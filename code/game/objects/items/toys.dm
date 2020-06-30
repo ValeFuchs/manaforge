@@ -1677,10 +1677,10 @@ obj/item/toy/cards/deck/syndicate/black
 	icon_state = "lawyer"
 	toysay = "Standard Operating Procedure says they're guilty! Hacking is proof they're an Enemy of the Corporation!"
 
-/obj/item/toy/figure/librarian
-	name = "Librarian action figure"
-	icon_state = "librarian"
-	toysay = "One day while..."
+/obj/item/toy/figure/archaeologist
+	name = "Archaeologist action figure"
+	icon_state = "archaeologist"
+	toysay = "How was I supposed to know it was a gun?"
 
 /obj/item/toy/figure/md
 	name = "Medical Doctor action figure"

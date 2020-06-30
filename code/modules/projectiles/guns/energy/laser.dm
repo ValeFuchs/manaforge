@@ -89,7 +89,7 @@
 	name = "accelerator laser"
 	icon_state = "heavylaser"
 	range = 255
-	damage = 6
+	damage = 10
 
 /obj/item/projectile/beam/laser/accelerator/Range()
 	..()

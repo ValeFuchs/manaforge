@@ -24,8 +24,6 @@ GLOBAL_LIST_INIT(station_departments, list("Command", "Medical", "Engineering", 
 
 /datum/job/janitor/department = "Support"
 
-/datum/job/librarian/department = "Support"
-
 /datum/job/lawyer/department = "Support"
 
 /datum/job/chaplain/department = "Support"
@@ -59,6 +57,8 @@ GLOBAL_LIST_INIT(station_departments, list("Command", "Medical", "Engineering", 
 /datum/job/scientist/department = "Science"
 
 /datum/job/roboticist/department = "Science"
+
+/datum/job/archaeologist/department = "Science"
 
 /datum/job/hos/department = "Security"
 /datum/job/hos/head_position = 1

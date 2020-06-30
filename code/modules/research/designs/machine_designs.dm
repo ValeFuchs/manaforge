@@ -272,6 +272,16 @@
 	build_path = /obj/item/circuitboard/mechfab
 	category = list("Research Machinery")
 
+/datum/design/archan
+	name = "Machine Board (Artifact Restorer)"
+	desc = "The circuit board for an Artifact Restorer"
+	id = "archan"
+	req_tech = list("programming" = 3, "engineering" = 3)
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 1000)
+	build_path = /obj/item/circuitboard/archan
+	category = list("Research Machinery")
+
 /datum/design/podfab
 	name = "Machine Board (Spacepod Fabricator)"
 	desc = "The circuit board for an Spacepod Fabricator"

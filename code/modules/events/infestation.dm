@@ -2,7 +2,7 @@
 #define LOC_ATMOS 1
 #define LOC_INCIN 2
 #define LOC_CHAPEL 3
-#define LOC_LIBRARY 4
+#define LOC_MUSEUM 4
 #define LOC_HYDRO 5
 #define LOC_VAULT 6
 #define LOC_CONSTR 7
@@ -39,9 +39,9 @@
 		if(LOC_CHAPEL)
 			spawn_area_type = /area/chapel/main
 			locstring = "the chapel"
-		if(LOC_LIBRARY)
-			spawn_area_type = /area/library
-			locstring = "the library"
+		if(LOC_MUSEUM)
+			spawn_area_type = /area/museum
+			locstring = "the museum"
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
 			locstring = "hydroponics"
@@ -103,7 +103,7 @@
 #undef LOC_ATMOS
 #undef LOC_INCIN
 #undef LOC_CHAPEL
-#undef LOC_LIBRARY
+#undef LOC_MUSEUM
 #undef LOC_HYDRO
 #undef LOC_VAULT
 #undef LOC_TECH

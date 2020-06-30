@@ -167,13 +167,13 @@
 	icon_state = "rock_highchance"
 	mineralChance = 25
 	mineralSpawnChanceList = list(
-		/turf/simulated/mineral/uranium = 35, /turf/simulated/mineral/diamond = 30, /turf/simulated/mineral/gold = 45, /turf/simulated/mineral/titanium = 45,
+		/turf/simulated/mineral/uranium = 35, /turf/simulated/mineral/fossil = 35, /turf/simulated/mineral/diamond = 30, /turf/simulated/mineral/gold = 45, /turf/simulated/mineral/titanium = 45,
 		/turf/simulated/mineral/silver = 50, /turf/simulated/mineral/plasma = 50, /turf/simulated/mineral/bscrystal = 20)
 
 /turf/simulated/mineral/random/high_chance/clown
 	mineralChance = 40
 	mineralSpawnChanceList = list(
-		/turf/simulated/mineral/uranium = 35, /turf/simulated/mineral/diamond = 2, /turf/simulated/mineral/gold = 5, /turf/simulated/mineral/silver = 5,
+		/turf/simulated/mineral/uranium = 35, /turf/simulated/mineral/fossil = 35, /turf/simulated/mineral/diamond = 2, /turf/simulated/mineral/gold = 5, /turf/simulated/mineral/silver = 5,
 		/turf/simulated/mineral/iron = 30, /turf/simulated/mineral/clown = 15, /turf/simulated/mineral/mime = 15, /turf/simulated/mineral/bscrystal = 10)
 
 /turf/simulated/mineral/random/high_chance/volcanic
@@ -185,14 +185,14 @@
 	temperature = 300
 	defer_change = 1
 	mineralSpawnChanceList = list(
-		/turf/simulated/mineral/uranium/volcanic = 35, /turf/simulated/mineral/diamond/volcanic = 30, /turf/simulated/mineral/gold/volcanic = 45, /turf/simulated/mineral/titanium/volcanic = 45,
+		/turf/simulated/mineral/uranium/volcanic = 35, /turf/simulated/mineral/fossil/volcanic = 35, /turf/simulated/mineral/diamond/volcanic = 30, /turf/simulated/mineral/gold/volcanic = 45, /turf/simulated/mineral/titanium/volcanic = 45,
 		/turf/simulated/mineral/silver/volcanic = 50, /turf/simulated/mineral/plasma/volcanic = 50, /turf/simulated/mineral/bscrystal/volcanic = 20)
 
 /turf/simulated/mineral/random/low_chance
 	icon_state = "rock_lowchance"
 	mineralChance = 6
 	mineralSpawnChanceList = list(
-		/turf/simulated/mineral/uranium = 2, /turf/simulated/mineral/diamond = 1, /turf/simulated/mineral/gold = 4, /turf/simulated/mineral/titanium = 4,
+		/turf/simulated/mineral/uranium = 2, /turf/simulated/mineral/fossil = 2, /turf/simulated/mineral/diamond = 1, /turf/simulated/mineral/gold = 4, /turf/simulated/mineral/titanium = 4,
 		/turf/simulated/mineral/silver = 6, /turf/simulated/mineral/plasma = 15, /turf/simulated/mineral/iron = 40,
 		/turf/simulated/mineral/gibtonite = 2, /turf/simulated/mineral/bscrystal = 1)
 
@@ -207,13 +207,13 @@
 
 	mineralChance = 10
 	mineralSpawnChanceList = list(
-		/turf/simulated/mineral/uranium/volcanic = 5, /turf/simulated/mineral/diamond/volcanic = 1, /turf/simulated/mineral/gold/volcanic = 10, /turf/simulated/mineral/titanium/volcanic = 11,
+		/turf/simulated/mineral/uranium/volcanic = 5, /turf/simulated/mineral/fossil/volcanic = 5, /turf/simulated/mineral/diamond/volcanic = 1, /turf/simulated/mineral/gold/volcanic = 10, /turf/simulated/mineral/titanium/volcanic = 11,
 		/turf/simulated/mineral/silver/volcanic = 12, /turf/simulated/mineral/plasma/volcanic = 20, /turf/simulated/mineral/iron/volcanic = 40,
 		/turf/simulated/mineral/gibtonite/volcanic = 4, /turf/simulated/floor/plating/asteroid/airless/cave/volcanic = 1, /turf/simulated/mineral/bscrystal/volcanic = 1)
 
 /turf/simulated/mineral/random/labormineral
 	mineralSpawnChanceList = list(
-		/turf/simulated/mineral/uranium = 3, /turf/simulated/mineral/diamond = 1, /turf/simulated/mineral/gold = 8, /turf/simulated/mineral/titanium = 8,
+		/turf/simulated/mineral/uranium = 3, /turf/simulated/mineral/fossil = 3, /turf/simulated/mineral/diamond = 1, /turf/simulated/mineral/gold = 8, /turf/simulated/mineral/titanium = 8,
 		/turf/simulated/mineral/silver = 20, /turf/simulated/mineral/plasma = 30, /turf/simulated/mineral/iron = 95,
 		/turf/simulated/mineral/gibtonite = 2)
 	icon_state = "rock_labor"
@@ -227,7 +227,7 @@
 	temperature = 300
 	defer_change = 1
 	mineralSpawnChanceList = list(
-		/turf/simulated/mineral/uranium/volcanic = 3, /turf/simulated/mineral/diamond/volcanic = 1, /turf/simulated/mineral/gold/volcanic = 8, /turf/simulated/mineral/titanium/volcanic = 8,
+		/turf/simulated/mineral/uranium/volcanic = 3, /turf/simulated/mineral/fossil/volcanic = 3, /turf/simulated/mineral/diamond/volcanic = 1, /turf/simulated/mineral/gold/volcanic = 8, /turf/simulated/mineral/titanium/volcanic = 8,
 		/turf/simulated/mineral/silver/volcanic = 20, /turf/simulated/mineral/plasma/volcanic = 30, /turf/simulated/mineral/bscrystal/volcanic = 1, /turf/simulated/mineral/gibtonite/volcanic = 2,
 		/turf/simulated/mineral/iron/volcanic = 95)
 
@@ -254,6 +254,21 @@
 	scan_state = "rock_Uranium"
 
 /turf/simulated/mineral/uranium/volcanic
+	environment_type = "basalt"
+	turf_type = /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface
+	baseturf = /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface
+	oxygen = 14
+	nitrogen = 23
+	temperature = 300
+	defer_change = 1
+
+/turf/simulated/mineral/fossil
+	mineralType = /obj/item/archaeology/artifact/fossil
+	spreadChance = 5
+	spread = 1
+	scan_state = "rock_Fossil"
+
+/turf/simulated/mineral/fossil/volcanic
 	environment_type = "basalt"
 	turf_type = /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface
 	baseturf = /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface

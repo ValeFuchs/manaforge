@@ -29,7 +29,7 @@
 
 /obj/item/clothing/head/collectable/paper
 	name = "collectable paper hat"
-	desc = "What looks like an ordinary paper hat, is actually a rare and valuable collector's edition paper hat. Keep away from water, fire and Librarians."
+	desc = "What looks like an ordinary paper hat, is actually a rare and valuable collector's edition paper hat. Keep away from water, fire and archaeologists."
 	icon_state = "paper"
 	dog_fashion = /datum/dog_fashion/head
 

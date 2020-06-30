@@ -43,3 +43,21 @@
 	var/desc = "Make a Ripley or Firefighter."
 	desc += "([units_completed] created.)"
 	return desc
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// Archaeology
+/////////////////////////////////////////////////////////////////////////////////////////
+
+/datum/job_objective/archaeology
+	completion_payment = 1200
+	per_unit = 1
+
+/datum/job_objective/archaeology/get_description()
+	var/desc = "Restore artifacts / fossils, and have cargo ship them to centcomm."
+	desc += "([units_completed] completed.)"
+	return desc
+
+/datum/job_objective/archaeology/check_for_completion()
+	if(SSshuttle.sentArtifact)
+		return 1
+	return 0

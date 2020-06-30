@@ -148,16 +148,10 @@
 /obj/item/pda/roboticist
 	icon_state = "pda-roboticist"
 
-/obj/item/pda/librarian
-	icon_state = "pda-library"
-	desc = "A portable microcomputer by Thinktronic Systems, LTD. This is model is a WGW-11 series e-reader."
-	model_name = "Thinktronic 5290 WGW-11 Series E-reader and Personal Data Assistant"
-
-/obj/item/pda/librarian/New()
-	..()
-	var/datum/data/pda/app/M = find_program(/datum/data/pda/app/messenger)
-	if(M)
-		M.notify_silent = 1 //Quiet in the library!
+/obj/item/pda/archaeologist
+	default_cartridge = /obj/item/cartridge/signal/toxins
+	icon_state = "pda-science"
+	ttone = "boom"
 
 /obj/item/pda/clear
 	icon_state = "pda-transp"
@@ -191,7 +185,7 @@
 	var/datum/data/pda/app/messenger/M = find_program(/datum/data/pda/app/messenger)
 	if(M)
 		M.m_hidden = 1
-		
+
 //Some spare PDAs in a box
 /obj/item/storage/box/PDAs
 	name = "spare PDAs"

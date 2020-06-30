@@ -961,13 +961,17 @@ GLOBAL_LIST_EMPTY(ghostteleportlocs)
 	name = "\improper Mr Chang's"
 	icon_state = "Theatre"
 
-/area/library
-	name = "\improper Library"
-	icon_state = "library"
+/area/museum
+	name = "\improper Museum"
+	icon_state = "museum"
 
-/area/library/abandoned
+/area/archaeology
+	name = "\improper Archaeology Lab"
+	icon_state = "archeo"
+
+/area/museum/abandoned
 	name = "\improper Abandoned Library"
-	icon_state = "library"
+	icon_state = "museum"
 
 /area/chapel/main
 	name = "\improper Chapel"
@@ -1791,7 +1795,7 @@ GLOBAL_LIST_EMPTY(ghostteleportlocs)
 
 /area/derelict/secret
 	name = "\improper Derelict Secret Room"
-	icon_state = "library"
+	icon_state = "museum"
 
 /area/derelict/bridge/access
 	name = "Derelict Control Room Access"
@@ -2323,7 +2327,8 @@ GLOBAL_LIST_INIT(the_station_areas, list(
 	/area/crew_quarters,
 	/area/civilian,
 	/area/holodeck,
-	/area/library,
+	/area/museum,
+	/area/archaeology,
 	/area/chapel,
 	/area/escapepodbay,
 	/area/lawoffice,

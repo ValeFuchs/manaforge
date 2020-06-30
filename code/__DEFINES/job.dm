@@ -33,6 +33,7 @@
 #define JOB_ROBOTICIST		(1<<8)
 #define JOB_PARAMEDIC			(1<<9)
 #define JOB_CORONER			(1<<10)
+#define JOB_ARCHAEOLOGIST			(1<<11)
 
 
 #define JOBCAT_SUPPORT			(1<<2)
@@ -42,15 +43,14 @@
 #define JOB_BOTANIST			(1<<2)
 #define JOB_CHEF				(1<<3)
 #define JOB_JANITOR			(1<<4)
-#define JOB_LIBRARIAN			(1<<5)
-#define JOB_QUARTERMASTER		(1<<6)
-#define JOB_CARGOTECH			(1<<7)
-#define JOB_MINER				(1<<8)
-#define JOB_LAWYER			(1<<9)
-#define JOB_CHAPLAIN			(1<<10)
-#define JOB_CLOWN				(1<<11)
-#define JOB_MIME				(1<<12)
-#define JOB_CIVILIAN			(1<<13)
+#define JOB_QUARTERMASTER		(1<<5)
+#define JOB_CARGOTECH			(1<<6)
+#define JOB_MINER				(1<<7)
+#define JOB_LAWYER			(1<<8)
+#define JOB_CHAPLAIN			(1<<9)
+#define JOB_CLOWN				(1<<10)
+#define JOB_MIME				(1<<11)
+#define JOB_CIVILIAN			(1<<12)
 
 
 #define JOBCAT_KARMA				(1<<3)

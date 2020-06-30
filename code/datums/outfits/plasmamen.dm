@@ -24,11 +24,11 @@
 	head = /obj/item/clothing/head/helmet/space/plasmaman/botany
 	uniform = /obj/item/clothing/under/plasmaman/botany
 
-/datum/outfit/plasmaman/librarian
-	name = "Librarian Plasmaman"
+/datum/outfit/plasmaman/archaeologist
+	name = "Archaeologist Plasmaman"
 
-	head = /obj/item/clothing/head/helmet/space/plasmaman/librarian
-	uniform = /obj/item/clothing/under/plasmaman/librarian
+	head = /obj/item/clothing/head/helmet/space/plasmaman/archaeologist
+	uniform = /obj/item/clothing/under/plasmaman/archaeologist
 
 /datum/outfit/plasmaman/chaplain
 	name = "Chaplain Plasmaman"

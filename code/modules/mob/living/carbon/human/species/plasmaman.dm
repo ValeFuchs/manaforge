@@ -54,8 +54,8 @@
 		if("Chaplain")
 			O = new /datum/outfit/plasmaman/chaplain
 
-		if("Librarian")
-			O = new /datum/outfit/plasmaman/librarian
+		if("Archaeologist")
+			O = new /datum/outfit/plasmaman/archaeologist
 
 		if("Janitor")
 			O = new /datum/outfit/plasmaman/janitor

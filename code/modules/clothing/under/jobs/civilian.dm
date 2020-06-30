@@ -194,15 +194,6 @@
 	item_state = "oldman"
 	item_color = "oldman"
 
-
-/obj/item/clothing/under/librarian
-	name = "sensible suit"
-	desc = "It's very... sensible."
-	icon_state = "red_suit"
-	item_state = "red_suit"
-	item_color = "red_suit"
-	flags_size = ONESIZEFITSALL
-
 /obj/item/clothing/under/mime
 	name = "mime's outfit"
 	desc = "It's not very colourful."

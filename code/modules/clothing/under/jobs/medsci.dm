@@ -44,6 +44,15 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_size = null
 
+/obj/item/clothing/under/rank/archaeologist
+	name = "archaeologist's jumpsuit"
+	desc = "An archaeologist's jumpsuit, for work in the lab and in the field."
+	icon_state = "retro_eng"
+	item_state = "retro_eng"
+	item_color = "retro_eng"
+	displays_id = 0
+	flags_size = ONESIZEFITSALL
+
 /*
  * Medical
  */

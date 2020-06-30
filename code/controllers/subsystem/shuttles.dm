@@ -30,10 +30,12 @@ SUBSYSTEM_DEF(shuttle)
 	var/points_per_crate = 5			//points gained per crate returned
 	var/points_per_intel = 250			//points gained per intel returned
 	var/points_per_plasma = 5			//points gained per plasma returned
+	var/points_per_artifact = 200		//points gained per artifact returned
 	var/points_per_design = 25			//points gained per research design returned
 	var/centcom_message = ""			//Remarks from Centcom on how well you checked the last order.
 	var/list/discoveredPlants = list()	//Typepaths for unusual plants we've already sent CentComm, associated with their potencies
 	var/list/techLevels = list()
+	var/sentArtifact = FALSE
 	var/list/researchDesigns = list()
 	var/list/shoppinglist = list()
 	var/list/requestlist = list()

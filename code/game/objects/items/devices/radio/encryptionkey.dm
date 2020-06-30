@@ -75,6 +75,11 @@
 	icon_state = "sci_cypherkey"
 	channels = list("Science" = 1)
 
+/obj/item/encryptionkey/headset_arch
+	name = "Archaeology Radio Encryption Key"
+	icon_state = "sci_cypherkey"
+	channels = list("Science" = 1, "Supply" = 1)
+
 /obj/item/encryptionkey/headset_medsci
 	name = "Medical Research Radio Encryption Key"
 	icon_state = "medsci_cypherkey"

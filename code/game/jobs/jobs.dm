@@ -38,6 +38,7 @@ GLOBAL_LIST_INIT(science_positions, list(
 	"Scientist",
 	"Geneticist",	//Part of both medical and science
 	"Roboticist",
+	"Archaeologist"
 ))
 
 //BS12 EDIT
@@ -46,8 +47,7 @@ GLOBAL_LIST_INIT(support_positions, list(
 	"Bartender",
 	"Botanist",
 	"Chef",
-	"Janitor",
-	"Librarian",
+	"Janitor",,
 	"Quartermaster",
 	"Cargo Technician",
 	"Shaft Miner",

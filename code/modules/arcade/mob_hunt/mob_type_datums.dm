@@ -169,7 +169,7 @@
 						/area/maintenance/asmaint2,
 						/area/teleporter,
 						/area/gateway)
-	area_whitelist = list(/area/library,
+	area_whitelist = list(/area/museum,
 						/area/chapel,
 						/area/medical/psych)
 
