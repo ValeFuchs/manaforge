@@ -3,12 +3,25 @@
 	desc = "A mysterious artifact lost to time. It looks to be restorable, but is covered in dirt and grime."
 	icon = 'icons/obj/archaeology.dmi'
 	icon_state = "artifact"
-	var/scan_state = "artifact"
+	var/gps = null
 	force = 1
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 0
 	throw_speed = 3
 	throw_range = 6
+
+/obj/item/gps/internal/archaeology //every artifact needs an internal gps beacon so finding them isn't a total fucking nightmare
+	gpstag = "Potential Artifact"
+	desc = "Quantum entanglement scans suggest an object of archaeological significance is here."
+
+/obj/item/archaeology/artifact/Initialize(mapload)
+	. = ..()
+	gps = new /obj/item/gps/internal/archaeology(src)
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/item/archaeology/artifact/Destroy()
+	QDEL_NULL(gps)
+	return ..()
 
 /obj/item/archaeology/artifact/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/archaeology/brush))

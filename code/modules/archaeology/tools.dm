@@ -37,6 +37,10 @@
 	origin_tech = "materials=1"
 	attack_verb = list("drilled")
 
+/obj/item/gps/archaeology //I find artifacts
+	icon_state = "gps-s"
+	gpstag = "ARCH0"
+
 /**********************Belt**********************/
 /obj/item/storage/belt/archaeology
 	name = "archaeologist belt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
@@ -48,7 +52,7 @@
 		/obj/item/archaeology/brush,
 		/obj/item/archaeology/probepick,
 		/obj/item/archaeology/archeodrill,
-		/obj/item/pinpointer/archaeology,
+		/obj/item/gps/archaeology,
 		/obj/item/shovel,
 		/obj/item/pickaxe/mini,
 		/obj/item/flashlight,
@@ -60,7 +64,7 @@
 	new /obj/item/archaeology/brush(src)
 	new /obj/item/archaeology/probepick(src)
 	new /obj/item/archaeology/archeodrill(src)
-	new /obj/item/pinpointer/archaeology(src)
+	new /obj/item/gps/archaeology(src)
 	new /obj/item/flashlight/seclite(src)
 	update_icon()
 
@@ -87,71 +91,12 @@
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/pickaxe/mini(src)
 	new /obj/item/flashlight/seclite(src)
-	new /obj/item/pinpointer/archaeology(src)
+	new /obj/item/gps/archaeology(src)
 	new /obj/item/gun/energy/kinetic_accelerator(src)
 	new /obj/item/clothing/glasses/meson(src)
 	new /obj/item/survivalcapsule(src)
 	new /obj/item/clothing/head/cowboyhat/tan
 
-/**********************Fossil Scanner**********************/
-/obj/item/pinpointer/archaeology
-	name = "relic locator"
-	desc = "A device capable of tracking down ancient artifacts using a tachyon enhanced quantum entanglement detection system."
-	icon = 'icons/obj/device.dmi'
-	icon_state = "pinoff_crew"
-	flags = CONDUCT
-	slot_flags = SLOT_PDA | SLOT_BELT
-	w_class = WEIGHT_CLASS_SMALL
-	item_state = "electronic"
-	throw_speed = 4
-	throw_range = 20
-	materials = list(MAT_METAL=500)
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-	var/obj/item/archaeology/artifact/coolthing = null
-	shows_nuke_timer = FALSE
-	icon_off = "pinoff_crew"
-	icon_null = "pinonnull_crew"
-	icon_direct = "pinondirect_crew"
-	icon_close = "pinonclose_crew"
-	icon_medium = "pinonmedium_crew"
-	icon_far = "pinonfar_crew"
-
-/obj/item/pinpointer/archaeology/New()
-	..()
-	GLOB.pinpointer_list += src
-
-/obj/item/pinpointer/archaeology/Destroy()
-	GLOB.pinpointer_list -= src
-	active = 0
-	coolthing = null
-	return ..()
-
-/obj/item/pinpointer/archaeology/attack_self()
-	if(!active)
-		active = 1
-		workrelic()
-		to_chat(usr, "<span class='notice'>You activate the locator.</span>")
-	else
-		active = 0
-		icon_state = icon_off
-		to_chat(usr, "<span class='notice'>You deactivate the locator.</span>")
-
-/obj/item/pinpointer/archaeology/proc/scanrelic()
-	if(!coolthing)
-		coolthing = locate()
-
-/obj/item/pinpointer/archaeology/proc/workrelic()
-	scanrelic()
-	point_at(coolthing, 0)
-	spawn(5)
-		.()
-
-/obj/item/pinpointer/archaeology/examine(mob/user)
-	. = ..()
-	if(shows_nuke_timer)
-		for(var/obj/machinery/nuclearbomb/bomb in GLOB.machines)
-			if(bomb.timing)
-				. += "Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]"
 
 /////////Big Display Case////////////
 
