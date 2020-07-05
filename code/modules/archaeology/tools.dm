@@ -205,7 +205,7 @@
 				<b>Your equipment consists of:</b><br>
 				Brushes, curettes, and drills for handling artifacts<br>
 				A state of the art artifact restoration machine for restoring and cataloguing whatever relics you find.<br>
-				A pinpointer capable of detecting rare and ancient objects.<br>
+				A GPS unit capable of detecting rare and ancient objects.<br>
 				Pens, paper, and a camera. Remember, Nanotrasen expects you to report your discoveries.<br>
 				</p>
 
@@ -231,7 +231,7 @@
 
 				As you have no doubt noticed, your space station includes a museum fully equiped to showcase the artifacts you find.<br>
 				Per department policy, Nanotrasen expects the station's resident archaeology team to supply and curate the museum's collection for display to the general crew / public.<br><br>
-				<font color='red'>In addition, Nanotrasen expects to receive artifact shipments from the station each shift. Discuss transportation options with your station cargo bay team.</font><br><br>
+				<b>In addition, Nanotrasen expects to receive artifact shipments from the station each shift. Discuss transportation options with your station cargo bay team.</b><br><br>
 
 
 				<h4><b><font color='red'>*Notice from Legal</font></b></h4>
