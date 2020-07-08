@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(support_positions, list(
 	"Bartender",
 	"Botanist",
 	"Chef",
-	"Janitor",,
+	"Janitor",
 	"Quartermaster",
 	"Cargo Technician",
 	"Shaft Miner",
