@@ -344,3 +344,41 @@
 						qdel(src)
 	else
 		return ..()
+
+
+////////Jungle stuff//////////////
+
+/obj/structure/flora/junglebush
+	name = "bush"
+	desc = "A wild plant that is found in jungles."
+	icon = 'icons/obj/flora/jungleflora.dmi'
+	icon_state = "busha"
+
+/obj/structure/flora/junglebush/Initialize()
+	icon_state = "[icon_state][rand(1, 3)]"
+	. = ..()
+
+/obj/structure/flora/junglebush/b
+	icon_state = "bushb"
+
+/obj/structure/flora/junglebush/c
+	icon_state = "bushc"
+
+/obj/structure/flora/junglebush/large
+	icon_state = "bush"
+	icon = 'icons/obj/flora/largejungleflora.dmi'
+	pixel_x = -16
+	pixel_y = -12
+	layer = ABOVE_ALL_MOB_LAYER
+
+/obj/structure/flora/rock/pile/largejungle
+	name = "rocks"
+	icon_state = "rocks"
+	icon = 'icons/obj/flora/largejungleflora.dmi'
+	density = FALSE
+	pixel_x = -16
+	pixel_y = -16
+
+/obj/structure/flora/rock/pile/largejungle/Initialize()
+	. = ..()
+	icon_state = "[initial(icon_state)][rand(1,3)]"

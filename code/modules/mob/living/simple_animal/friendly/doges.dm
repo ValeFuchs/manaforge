@@ -9,33 +9,32 @@
 	icon_state = "cheems"
 	icon_dead = "cheems_dead"
 	icon_living = "cheems"
+	gender = MALE
 	speak = list("Borf!", "Boof!", "Bork!")
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/cheeseburger = 1, /obj/item/reagent_containers/food/snacks/meat/slab = 2, /obj/item/trash/syndi_cakes = 1)
-	faction = list("dog", "doge")
-	animal_species = /mob/living/simple_animal/pet/dog
-	gold_core_spawnable = FRIENDLY_SPAWN
+	gold_core_spawnable = NO_SPAWN
+	unique_pet = TRUE
 
 /mob/living/simple_animal/pet/dog/tubbz/Move(atom/newloc, direct)
 	. = ..()
 	if(.)
 		for(var/obj/item/reagent_containers/food/snacks/cheeseburger/burbger in view(1, src))
-			visible_message("<span class='danger'><b>\The [src]</b> consumes the [burbger]!</span>")
+			visible_message("<span class='danger'><b>\The [src]</b> consumes the [burbger]!</b></span>")
 			qdel(burbger)
 			revive(full_heal = 1)
 
-/mob/living/simple_animal/pet/dog/tubbz/attacked_by(obj/item/I, mob/living/user)
+/mob/living/simple_animal/pet/dog/tubbz/attackby(obj/item/I, mob/living/user)
 	. = ..()
-	if(.)
-		if(istype(I, /obj/item/reagent_containers/food/snacks/cheeseburger))
-			qdel(I)
-			if(stat == DEAD)
-				visible_message("<b>\The [src]</b> stands right back up after nibbling the [I]!")
-			else
-				visible_message("<b>\The [src]</b> swallows the [I] whole!")
-			revive(full_heal = 1)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/cheeseburger))
+		qdel(I)
+		if(stat == DEAD)
+			visible_message("<b>\The [src]</b> stands right back up after nibbling the [I]!</b>")
 		else
-			qdel(I)
-			visible_message("<b>\ [src] swallows [I] whole, but doesn't seem to really like it.")
+			visible_message("<b>\The [src]</b> swallows the [I] whole!</b>")
+		revive(full_heal = 1)
+	else
+		qdel(I)
+		visible_message("<b>\ [src] swallows [I] whole, but doesn't seem to really like it.</b>")
 
 //cheemgularity
 /* disabled for now because error: maximum number of internal arrays exceeded (65535)

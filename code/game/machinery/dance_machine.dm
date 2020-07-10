@@ -1,3 +1,178 @@
+/obj/machinery/jukebox
+	name = "jukebox"
+	desc = "A classic music player."
+	icon = 'icons/obj/jukebox.dmi'
+	icon_state = "jukebox2"
+	anchored = FALSE
+	atom_say_verb = "states"
+	density = TRUE
+	var/active = FALSE
+	var/list/rangers = list()
+	var/charge = 35
+	var/stop = 0
+	var/static/list/songs = list(
+		new /datum/track("End of the Road", 				'sound/music/bar1.ogg', 	3090, 	5),
+		new /datum/track("Whats Your Poison", 				'sound/music/bar2.ogg', 	3880, 	6),
+		new /datum/track("The Gates of Hell", 				'sound/music/bar3.ogg', 	2380, 	4),
+		new /datum/track("A Pleasure House for Adults",		'sound/music/bar4.ogg',		1260, 	5),
+		new /datum/track("Blue Casket Bop",					'sound/music/bar5.ogg',		710, 	5),
+		new /datum/track("Die Bierhalle",					'sound/music/bar6.ogg',		1210, 	5),
+		new /datum/track("Brewfest",						'sound/music/bar7.ogg',		1470, 	5),
+		)
+	var/datum/track/selection = null
+
+/obj/machinery/jukebox/proc/add_track(file, name, length, beat)
+	var/sound/S = file
+	if(!istype(S))
+		return
+	if(!name)
+		name = "[file]"
+	if(!beat)
+		beat = 5
+	if(!length)
+		length = 2400 //Unless there's a way to discern via BYOND.
+	var/datum/track/T = new /datum/track(name, file, length, beat)
+	songs += T
+
+/obj/machinery/jukebox/New()
+	. = ..()
+	selection = songs[1]
+
+
+/obj/machinery/jukebox/Destroy()
+	dance_over()
+	selection = null
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/machinery/jukebox/wrench_act(mob/user, obj/item/I)
+	if(active)
+		return
+	. = TRUE
+	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
+		return
+	if(!anchored && !isinspace())
+		anchored = TRUE
+		WRENCH_ANCHOR_MESSAGE
+	else if(anchored)
+		anchored = FALSE
+		WRENCH_UNANCHOR_MESSAGE
+	playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
+
+/obj/machinery/jukebox/update_icon()
+	if(active)
+		icon_state = "jukebox2-running"
+	else
+		icon_state = "jukebox2"
+	..()
+
+
+
+/obj/machinery/jukebox/attack_hand(mob/user)
+	if(..())
+		return
+
+	interact(user)
+
+/obj/machinery/jukebox/interact(mob/user)
+	if(!anchored)
+		to_chat(user,"<span class='warning'>This device must be anchored by a wrench!</span>")
+		return
+	if(!Adjacent(user) && !isAI(user))
+		return
+	user.set_machine(src)
+	var/list/dat = list()
+	dat +="<div class='statusDisplay' style='text-align:center'>"
+	dat += "<b><A href='?src=[UID()];action=toggle'>[!active ? "Play Song" : "Stop Song"]<b></A><br>"
+	dat += "</div><br>"
+	dat += "<A href='?src=[UID()];action=select'> Select Track</A><br>"
+	dat += "Track Selected: [selection.song_name]<br>"
+	dat += "Track Length: [DisplayTimeText(selection.song_length)]<br><br>"
+	var/datum/browser/popup = new(user, "vending", "Jukebox", 400, 350)
+	popup.set_content(dat.Join())
+	popup.open()
+
+
+/obj/machinery/jukebox/Topic(href, href_list)
+	if(..())
+		return
+	add_fingerprint(usr)
+	switch(href_list["action"])
+		if("toggle")
+			if(QDELETED(src))
+				return
+			if(!active)
+				if(stop > world.time)
+					to_chat(usr, "<span class='warning'>Error: The device is still resetting from the last activation, it will be ready again in [DisplayTimeText(stop-world.time)].</span>")
+					playsound(src, 'sound/misc/compiler-failure.ogg', 50, 1)
+					return
+				active = TRUE
+				update_icon()
+				dance_setup()
+				START_PROCESSING(SSobj, src)
+				updateUsrDialog()
+			else if(active)
+				stop = 0
+				updateUsrDialog()
+		if("select")
+			if(active)
+				to_chat(usr, "<span class='warning'>Error: You cannot change the song until the current one is over.</span>")
+				return
+
+			var/list/available = list()
+			for(var/datum/track/S in songs)
+				available[S.song_name] = S
+			var/selected = input(usr, "Choose your song", "Track:") as null|anything in available
+			if(QDELETED(src) || !selected || !istype(available[selected], /datum/track))
+				return
+			selection = available[selected]
+			updateUsrDialog()
+
+/obj/machinery/jukebox/proc/deejay(S)
+	if(QDELETED(src) || !active || charge < 5)
+		to_chat(usr, "<span class='warning'>The device is not able to play more DJ sounds at this time.</span>")
+		return
+	charge -= 5
+	playsound(src, S, 300, 1)
+
+/obj/machinery/jukebox/proc/dance_setup()
+	stop = world.time + selection.song_length
+
+
+/obj/machinery/jukebox/proc/dance_over()
+	for(var/mob/living/L in rangers)
+		if(!L || !L.client)
+			continue
+		L.stop_sound_channel(CHANNEL_JUKEBOX)
+	rangers = list()
+
+
+/obj/machinery/jukebox/process()
+	if(charge < 35)
+		charge += 1
+	if(world.time < stop && active)
+		var/sound/song_played = sound(selection.song_path)
+
+		for(var/mob/M in range(7,src))
+			if(!M.client || M.client.prefs.sound & SOUND_DISCO)
+				if(!(M in rangers))
+					rangers[M] = TRUE
+					M.playsound_local(get_turf(M), null, 100, channel = CHANNEL_JUKEBOX, S = song_played)
+		for(var/mob/L in rangers)
+			if(get_dist(src, L) > 7)
+				rangers -= L
+				if(!L || !L.client)
+					continue
+				L.stop_sound_channel(CHANNEL_JUKEBOX)
+	else if(active)
+		active = FALSE
+		STOP_PROCESSING(SSobj, src)
+		dance_over()
+		playsound(src,'sound/machines/terminal_off.ogg',50,1)
+		icon_state = "jukebox2"
+		stop = world.time + 100
+
+/////////////////////////DISCO BALL//////////////////////////////
 /obj/machinery/disco
 	name = "radiant dance machine mark IV"
 	desc = "The first three prototypes were discontinued after mass casualty incidents."
